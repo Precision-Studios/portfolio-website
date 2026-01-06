@@ -38,14 +38,14 @@ export default function MvpList() {
                         Our <span className="text-white/40 italic">MVPs / Projects</span>
                     </h1>
                     <p className="text-xl text-white/60 max-w-2xl">
-                        A collection of high-performance, precision-engineered minimum viable products.
+                        A collection of high-performance, precision-engineered craft.
                     </p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
                     {mvps.map((mvp, index) => {
                         const CardContent = (
-                            <div className="relative p-10 rounded-3xl bg-neutral-900 border border-white/5 overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-neutral-800 h-full flex flex-col">
+                            <div className="relative p-6 rounded-3xl bg-neutral-900 border border-white/5 overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-neutral-800 h-full flex flex-col">
                                 <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${mvp.color} opacity-10 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:opacity-20 transition-opacity`} />
 
                                 <div className="relative z-10 flex-grow">
@@ -53,7 +53,7 @@ export default function MvpList() {
                                         <mvp.icon className="w-8 h-8 text-white" />
                                     </div>
 
-                                    <h2 className="text-3xl font-bold mb-4 flex items-center gap-3">
+                                    <h2 className="text-3xl font-bold mb-2 flex items-center gap-2">
                                         {mvp.title}
                                         {mvp.isExternal ? (
                                             <ExternalLink className="w-5 h-5 opacity-40" />
@@ -62,11 +62,11 @@ export default function MvpList() {
                                         )}
                                     </h2>
 
-                                    <p className="text-lg text-white/50 leading-relaxed mb-8 max-w-md">
+                                    <p className="text-lg text-white/50 leading-relaxed mb-5 max-w-md">
                                         {mvp.description}
                                     </p>
 
-                                    <div className="flex flex-wrap gap-2 mb-8">
+                                    <div className="flex flex-wrap gap-2 mb-5">
                                         {mvp.tags.map(tag => (
                                             <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/40">
                                                 {tag}

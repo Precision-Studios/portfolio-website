@@ -5,6 +5,7 @@ import App from './App.jsx'
 import './styles/index.css'
 import { AuthProvider } from './context/AuthContext'
 import { CartProvider } from './context/CartContext.jsx'
+import { Analytics } from '@vercel/analytics/react'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <CartProvider>
           <App />
+          <Analytics />
         </CartProvider>
       </AuthProvider>
     </BrowserRouter>

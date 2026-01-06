@@ -149,6 +149,11 @@ export default function Home() {
 
             {/* Footer-ish text */}
             <footer className="relative z-10 py-20 px-6 text-center text-white/20 text-sm tracking-widest font-light">
+                <div className="mb-8">
+                    <Link to="/contact" className="hover:text-white transition-colors">
+                        CONTACT US
+                    </Link>
+                </div>
                 © {new Date().getFullYear()} PRECISION STUDIOS. ALL RIGHTS RESERVED.
             </footer>
         </div>

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Cart from './pages/Cart';
 
+import Contact from './pages/Contact';
 import Home from './pages/Home';
 import MvpList from './pages/MvpList';
 
@@ -15,6 +16,7 @@ function App() {
     <Routes>
       {/* Precision Studios Landing */}
       <Route path="/" element={<Home />} />
+      <Route path="/contact" element={<Contact />} />
 
       {/* MVP Showcase */}
       <Route path="/mvp" element={<MvpList />} />

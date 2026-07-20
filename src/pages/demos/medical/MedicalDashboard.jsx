@@ -5,10 +5,10 @@ import { ArrowLeft, Clock, CheckCircle, AlertCircle, Users, Activity, Calendar, 
 import { mockAppointments, dashboardStats, clinicInfo } from '../../../data/medicalData';
 
 const statusConfig = {
-  confirmed: { label: 'Confirmed', color: 'text-carbon-teal-40', bg: 'bg-carbon-teal-40/10', icon: <CheckCircle className="w-4 h-4" /> },
-  pending: { label: 'Pending', color: 'text-yellow-400', bg: 'bg-yellow-400/10', icon: <Clock className="w-4 h-4" /> },
-  'in-progress': { label: 'In Progress', color: 'text-blue-400', bg: 'bg-blue-400/10', icon: <Activity className="w-4 h-4" /> },
-  completed: { label: 'Completed', color: 'text-green-400', bg: 'bg-green-400/10', icon: <CheckCircle className="w-4 h-4" /> },
+  confirmed: { label: 'Confirmed', color: 'text-teal-700', bg: 'bg-teal-50', dot: 'bg-teal-500' },
+  pending: { label: 'Pending', color: 'text-amber-700', bg: 'bg-amber-50', dot: 'bg-amber-500' },
+  'in-progress': { label: 'In Progress', color: 'text-blue-700', bg: 'bg-blue-50', dot: 'bg-blue-500' },
+  completed: { label: 'Complete', color: 'text-green-700', bg: 'bg-green-50', dot: 'bg-green-500' },
 };
 
 export default function MedicalDashboard() {
@@ -16,26 +16,30 @@ export default function MedicalDashboard() {
   const [activeTab, setActiveTab] = useState('appointments');
 
   const updateStatus = (id, newStatus) => {
-    setAppointments(prev =>
-      prev.map(apt => apt.id === id ? { ...apt, status: newStatus } : apt)
-    );
+    setAppointments(prev => prev.map(apt => apt.id === id ? { ...apt, status: newStatus } : apt));
   };
 
   return (
-    <div className="min-h-screen bg-carbon-gray-100 text-white font-plex">
-      {/* Top Bar */}
-      <nav className="sticky top-0 z-30 flex items-center justify-between px-6 lg:px-12 h-12 border-b border-white/5 bg-carbon-gray-100/95 backdrop-blur-sm">
-        <Link to="/demos/medical" className="flex items-center gap-2 text-white/40 hover:text-white text-sm transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          <span className="hidden sm:inline">{clinicInfo.name}</span>
-        </Link>
-        <h1 className="text-sm font-semibold tracking-tight">Dashboard</h1>
-        <span className="text-xs text-white/30 font-plex-mono">Admin View</span>
+    <div className="min-h-screen bg-[#F8FAFB] text-[#1A1A2E]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+
+      {/* Nav */}
+      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
+          <Link to="/demos/medical" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="hidden sm:inline">{clinicInfo.name}</span>
+          </Link>
+          <h1 className="text-base font-semibold tracking-tight">Clinic Dashboard</h1>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <span className="text-xs text-gray-400">Live</span>
+          </div>
+        </div>
       </nav>
 
       {/* Tabs */}
-      <div className="border-b border-white/5">
-        <div className="max-w-7xl mx-auto flex">
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto flex px-4 gap-1 py-1">
           {[
             { id: 'appointments', label: "Today's Schedule" },
             { id: 'analytics', label: 'Clinic Analytics' },
@@ -43,10 +47,10 @@ export default function MedicalDashboard() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 text-sm font-medium transition-all border-b-2 ${
+              className={`px-5 py-2.5 text-sm rounded-lg transition-all ${
                 activeTab === tab.id
-                  ? 'border-carbon-teal-40 text-white'
-                  : 'border-transparent text-white/40 hover:text-white/60'
+                  ? 'bg-teal-50 text-teal-700 font-medium'
+                  : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
               }`}
             >
               {tab.label}
@@ -58,97 +62,78 @@ export default function MedicalDashboard() {
       <div className="max-w-7xl mx-auto px-6 py-8">
         {activeTab === 'appointments' ? (
           <>
-            {/* Stats Row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 mb-8">
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {[
-                { label: 'Total Today', value: dashboardStats.todayAppointments, icon: <Calendar className="w-5 h-5" />, accent: '' },
-                { label: 'Completed', value: dashboardStats.completedToday, icon: <CheckCircle className="w-5 h-5" />, accent: 'text-green-400' },
-                { label: 'Pending', value: dashboardStats.pendingToday, icon: <Clock className="w-5 h-5" />, accent: 'text-yellow-400' },
-                { label: 'In Progress', value: dashboardStats.inProgressToday, icon: <Activity className="w-5 h-5" />, accent: 'text-blue-400' },
+                { label: 'Total Today', value: dashboardStats.todayAppointments, icon: <Calendar className="w-5 h-5" />, color: 'bg-gray-50 text-gray-500' },
+                { label: 'Completed', value: dashboardStats.completedToday, icon: <CheckCircle className="w-5 h-5" />, color: 'bg-green-50 text-green-600' },
+                { label: 'Pending', value: dashboardStats.pendingToday, icon: <Clock className="w-5 h-5" />, color: 'bg-amber-50 text-amber-600' },
+                { label: 'In Progress', value: dashboardStats.inProgressToday, icon: <Activity className="w-5 h-5" />, color: 'bg-blue-50 text-blue-600' },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="p-5 bg-carbon-gray-100"
+                  className="bg-white rounded-xl p-5 border border-gray-100"
                 >
-                  <div className="flex items-center gap-2 text-white/30 mb-2">
-                    {stat.icon}
-                    <span className="text-xs uppercase tracking-wider">{stat.label}</span>
-                  </div>
-                  <p className={`text-2xl font-light font-plex-mono ${stat.accent}`}>{stat.value}</p>
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${stat.color} mb-3`}>{stat.icon}</div>
+                  <p className="text-xs uppercase tracking-wider text-gray-400 mb-1">{stat.label}</p>
+                  <p className="text-2xl font-semibold">{stat.value}</p>
                 </motion.div>
               ))}
             </div>
 
-            {/* Appointments List */}
-            <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-4">Today's Appointments</p>
-            <div className="space-y-0">
+            {/* Schedule */}
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-medium">Today's Appointments</p>
+            <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
               {appointments.map((apt, i) => {
                 const config = statusConfig[apt.status];
                 return (
                   <motion.div
                     key={apt.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ delay: i * 0.03 }}
-                    className="bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all mb-2"
+                    className="flex flex-col md:flex-row md:items-center gap-4 p-5 border-b border-gray-50 last:border-b-0 hover:bg-gray-50/50 transition-colors"
                   >
-                    <div className="flex flex-col md:flex-row md:items-center gap-4 p-5">
-                      {/* Time */}
-                      <div className="flex items-center gap-3 md:w-24 flex-shrink-0">
-                        <span className="text-lg font-plex-mono font-medium">{apt.time}</span>
-                      </div>
+                    <div className="flex items-center gap-3 md:w-20 flex-shrink-0">
+                      <span className="text-lg font-semibold font-mono">{apt.time}</span>
+                    </div>
 
-                      {/* Patient & Doctor */}
-                      <div className="flex-grow min-w-0">
-                        <div className="flex items-center gap-3 mb-1">
-                          <h3 className="text-sm font-semibold">{apt.patient}</h3>
-                          <span className={`flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 ${config.bg} ${config.color}`}>
-                            {config.icon}
-                            {config.label}
-                          </span>
-                        </div>
-                        <p className="text-xs text-white/40">
-                          {apt.doctor} · {apt.service}
+                    <div className="flex-grow min-w-0">
+                      <div className="flex items-center gap-3 mb-1 flex-wrap">
+                        <h3 className="text-sm font-semibold">{apt.patient}</h3>
+                        <span className={`flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full ${config.bg} ${config.color}`}>
+                          <span className={`w-1.5 h-1.5 rounded-full ${config.dot}`} />
+                          {config.label}
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-400">{apt.doctor} · {apt.service}</p>
+                      {apt.notes && (
+                        <p className="text-xs text-gray-300 mt-1 flex items-center gap-1">
+                          <AlertCircle className="w-3 h-3" />{apt.notes}
                         </p>
-                        {apt.notes && (
-                          <p className="text-xs text-white/25 mt-1 flex items-center gap-1">
-                            <AlertCircle className="w-3 h-3" />
-                            {apt.notes}
-                          </p>
-                        )}
-                      </div>
+                      )}
+                    </div>
 
-                      {/* Ref & Actions */}
-                      <div className="flex items-center gap-4 flex-shrink-0">
-                        <span className="text-xs font-plex-mono text-white/20">{apt.id}</span>
-                        {apt.status === 'pending' && (
-                          <button
-                            onClick={() => updateStatus(apt.id, 'confirmed')}
-                            className="text-xs font-medium px-3 py-1.5 bg-carbon-teal-40 text-carbon-gray-100 hover:bg-carbon-teal-50 transition-colors"
-                          >
-                            Confirm
-                          </button>
-                        )}
-                        {apt.status === 'confirmed' && (
-                          <button
-                            onClick={() => updateStatus(apt.id, 'in-progress')}
-                            className="text-xs font-medium px-3 py-1.5 bg-blue-500 text-white hover:bg-blue-600 transition-colors"
-                          >
-                            Start
-                          </button>
-                        )}
-                        {apt.status === 'in-progress' && (
-                          <button
-                            onClick={() => updateStatus(apt.id, 'completed')}
-                            className="text-xs font-medium px-3 py-1.5 bg-green-500 text-carbon-gray-100 hover:bg-green-600 transition-colors"
-                          >
-                            Complete
-                          </button>
-                        )}
-                      </div>
+                    <div className="flex items-center gap-3 flex-shrink-0">
+                      <span className="text-[11px] font-mono text-gray-300">{apt.id}</span>
+                      {apt.status === 'pending' && (
+                        <button onClick={() => updateStatus(apt.id, 'confirmed')} className="text-xs font-medium px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-500 transition-colors">
+                          Confirm
+                        </button>
+                      )}
+                      {apt.status === 'confirmed' && (
+                        <button onClick={() => updateStatus(apt.id, 'in-progress')} className="text-xs font-medium px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition-colors">
+                          Start
+                        </button>
+                      )}
+                      {apt.status === 'in-progress' && (
+                        <button onClick={() => updateStatus(apt.id, 'completed')} className="text-xs font-medium px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors">
+                          Complete
+                        </button>
+                      )}
                     </div>
                   </motion.div>
                 );
@@ -156,87 +141,66 @@ export default function MedicalDashboard() {
             </div>
           </>
         ) : (
-          /* Analytics Tab */
           <>
             {/* Overview Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {[
-                { label: 'Total Patients', value: dashboardStats.totalPatients.toLocaleString(), icon: <Users className="w-5 h-5" /> },
-                { label: 'New This Week', value: dashboardStats.newPatientsThisWeek, icon: <TrendingUp className="w-5 h-5" /> },
-                { label: 'Avg Wait Time', value: dashboardStats.avgWaitTime, icon: <Clock className="w-5 h-5" /> },
-                { label: 'Satisfaction', value: dashboardStats.satisfactionRate, icon: <CheckCircle className="w-5 h-5" /> },
+                { label: 'Total Patients', value: dashboardStats.totalPatients.toLocaleString(), icon: <Users className="w-5 h-5" />, color: 'bg-teal-50 text-teal-600' },
+                { label: 'New This Week', value: dashboardStats.newPatientsThisWeek, icon: <TrendingUp className="w-5 h-5" />, color: 'bg-blue-50 text-blue-600' },
+                { label: 'Avg Wait', value: dashboardStats.avgWaitTime, icon: <Clock className="w-5 h-5" />, color: 'bg-amber-50 text-amber-600' },
+                { label: 'Satisfaction', value: dashboardStats.satisfactionRate, icon: <CheckCircle className="w-5 h-5" />, color: 'bg-green-50 text-green-600' },
               ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="p-5 bg-carbon-gray-100"
-                >
-                  <div className="flex items-center gap-2 text-white/30 mb-2">
-                    {stat.icon}
-                    <span className="text-xs uppercase tracking-wider">{stat.label}</span>
-                  </div>
-                  <p className="text-2xl font-light font-plex-mono">{stat.value}</p>
+                <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
+                  className="bg-white rounded-xl p-5 border border-gray-100">
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${stat.color} mb-3`}>{stat.icon}</div>
+                  <p className="text-xs uppercase tracking-wider text-gray-400 mb-1">{stat.label}</p>
+                  <p className="text-2xl font-semibold">{stat.value}</p>
                 </motion.div>
               ))}
             </div>
 
-            {/* Weekly Appointments Chart */}
-            <div className="bg-white/[0.03] border border-white/5 p-6 mb-6">
+            {/* Weekly Chart */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6 shadow-sm">
               <h3 className="text-sm font-semibold mb-6">Appointments This Week</h3>
               <div className="flex items-end gap-3 h-40">
                 {dashboardStats.weeklyAppointments.map((count, i) => {
                   const maxCount = Math.max(...dashboardStats.weeklyAppointments);
                   const height = maxCount > 0 ? (count / maxCount) * 100 : 0;
                   return (
-                    <motion.div
-                      key={i}
-                      className="flex-1 flex flex-col items-center gap-2"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: i * 0.05 }}
-                    >
+                    <div key={i} className="flex-1 flex flex-col items-center gap-2">
                       <motion.div
-                        className="w-full bg-carbon-teal-40/50 hover:bg-carbon-teal-40 transition-colors cursor-pointer relative group"
+                        className="w-full bg-gradient-to-t from-teal-600 to-teal-400 rounded-lg hover:from-teal-500 hover:to-teal-300 transition-colors cursor-pointer relative group"
                         initial={{ height: 0 }}
                         animate={{ height: `${height}%` }}
-                        transition={{ delay: i * 0.05 + 0.3, duration: 0.5, ease: [0.4, 0.14, 0.3, 1] }}
+                        transition={{ delay: i * 0.05 + 0.3, duration: 0.5 }}
                       >
-                        <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-plex-mono text-white/40 opacity-0 group-hover:opacity-100 transition-opacity">
-                          {count}
-                        </span>
+                        <span className="absolute -top-5 left-1/2 -translate-x-1/2 text-[10px] font-mono text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">{count}</span>
                       </motion.div>
-                      <span className="text-[10px] text-white/30 font-plex-mono">{dashboardStats.weekLabels[i]}</span>
-                    </motion.div>
+                      <span className="text-[10px] text-gray-400 font-mono">{dashboardStats.weekLabels[i]}</span>
+                    </div>
                   );
                 })}
               </div>
             </div>
 
-            {/* Department Load */}
-            <div className="bg-white/[0.03] border border-white/5 p-6">
+            {/* Dept Load */}
+            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
               <h3 className="text-sm font-semibold mb-6">Department Capacity</h3>
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {dashboardStats.departmentLoad.map((dept, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <div className="flex justify-between text-sm mb-1.5">
-                      <span className="text-white/60">{dept.department}</span>
-                      <span className={`font-plex-mono ${dept.load > 75 ? 'text-red-400' : dept.load > 50 ? 'text-yellow-400' : 'text-carbon-teal-40'}`}>
+                  <motion.div key={i} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-gray-600">{dept.department}</span>
+                      <span className={`font-semibold ${dept.load > 75 ? 'text-red-500' : dept.load > 50 ? 'text-amber-500' : 'text-teal-600'}`}>
                         {dept.load}%
                       </span>
                     </div>
-                    <div className="h-2 bg-white/5 overflow-hidden">
+                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${dept.load}%` }}
-                        transition={{ delay: i * 0.1 + 0.2, duration: 0.6, ease: [0.4, 0.14, 0.3, 1] }}
-                        className={`h-full ${dept.load > 75 ? 'bg-red-400' : dept.load > 50 ? 'bg-yellow-400' : 'bg-carbon-teal-40'}`}
+                        transition={{ delay: i * 0.08 + 0.2, duration: 0.6 }}
+                        className={`h-full rounded-full ${dept.load > 75 ? 'bg-red-400' : dept.load > 50 ? 'bg-amber-400' : 'bg-teal-500'}`}
                       />
                     </div>
                   </motion.div>

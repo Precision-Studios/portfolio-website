@@ -18,21 +18,19 @@ export default function MedicalBooking() {
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [refNumber, setRefNumber] = useState('');
 
-  // Generate next 14 days
   const dates = Array.from({ length: 14 }, (_, i) => {
     const d = new Date();
     d.setDate(d.getDate() + i + 1);
     return {
       value: d.toISOString().split('T')[0],
-      day: d.toLocaleDateString('en-GB', { weekday: 'short' }),
+      day: d.toLocaleDateString('en-AU', { weekday: 'short' }),
       date: d.getDate(),
-      month: d.toLocaleDateString('en-GB', { month: 'short' }),
-      dayName: d.toLocaleDateString('en-GB', { weekday: 'long' }),
+      month: d.toLocaleDateString('en-AU', { month: 'short' }),
     };
   });
 
   const availableTimes = selectedDoctor && selectedDate
-    ? timeSlots.filter(() => Math.random() > 0.3) // simulate some unavailability
+    ? timeSlots.filter(() => Math.random() > 0.3)
     : timeSlots;
 
   const canProceed = () => {
@@ -46,65 +44,46 @@ export default function MedicalBooking() {
   };
 
   const handleConfirm = () => {
-    const ref = `APT-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9000) + 1000)}`;
-    setRefNumber(ref);
+    setRefNumber(`APT-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9000) + 1000)}`);
     setBookingConfirmed(true);
   };
 
   if (bookingConfirmed) {
     return (
-      <div className="min-h-screen bg-carbon-gray-100 text-white font-plex flex items-center justify-center px-6">
+      <div className="min-h-screen bg-[#F8FAFB] text-[#1A1A2E] flex items-center justify-center px-6" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: [0.4, 0.14, 0.3, 1] }}
+          transition={{ duration: 0.5 }}
           className="text-center max-w-md w-full"
         >
-          <div className="w-20 h-20 mx-auto mb-8 bg-carbon-teal-40/15 flex items-center justify-center">
-            <CheckCircle className="w-10 h-10 text-carbon-teal-40" />
+          <div className="w-20 h-20 mx-auto mb-6 bg-teal-50 rounded-2xl flex items-center justify-center">
+            <CheckCircle className="w-10 h-10 text-teal-600" />
           </div>
-          <h1 className="text-3xl font-light tracking-tight mb-3">Appointment Booked</h1>
-          <p className="text-sm text-white/40 mb-8">A confirmation has been sent to your email.</p>
+          <h1 className="text-2xl font-semibold mb-2">Appointment Booked</h1>
+          <p className="text-sm text-gray-400 mb-8">A confirmation has been sent to your email.</p>
 
-          <div className="bg-white/[0.03] border border-white/5 p-6 mb-8 text-left space-y-3">
-            <div className="flex justify-between text-sm">
-              <span className="text-white/40">Reference</span>
-              <span className="font-plex-mono font-semibold text-carbon-teal-40">{refNumber}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-white/40">Doctor</span>
-              <span>{selectedDoctor?.name}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-white/40">Date</span>
-              <span className="font-plex-mono">{selectedDate}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-white/40">Time</span>
-              <span className="font-plex-mono">{selectedTime}</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-white/40">Patient</span>
-              <span>{patientInfo.name}</span>
-            </div>
-            <div className="border-t border-white/5 pt-3 flex justify-between text-sm">
-              <span className="text-white/40">Fee</span>
-              <span className="font-plex-mono font-semibold">£{selectedDoctor?.consultationFee}</span>
-            </div>
+          <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-8 text-left space-y-3 shadow-sm">
+            {[
+              ['Reference', refNumber, 'font-semibold text-teal-600'],
+              ['Doctor', selectedDoctor?.name, ''],
+              ['Date', selectedDate, 'font-mono text-sm'],
+              ['Time', selectedTime, 'font-mono text-sm'],
+              ['Patient', patientInfo.name, ''],
+              ['Fee', `$${selectedDoctor?.consultationFee}`, 'font-semibold'],
+            ].map(([label, value, cls]) => (
+              <div key={label} className="flex justify-between text-sm">
+                <span className="text-gray-400">{label}</span>
+                <span className={cls}>{value}</span>
+              </div>
+            ))}
           </div>
 
           <div className="flex flex-col gap-3">
-            <Link
-              to="/demos/medical/doctors"
-              className="carbon-btn carbon-btn-primary flex items-center justify-center gap-2 w-full"
-              style={{ backgroundColor: '#08BDBA', color: '#161616' }}
-            >
+            <Link to="/demos/medical/doctors" className="w-full py-3 bg-teal-600 text-white rounded-xl font-semibold text-sm text-center hover:bg-teal-500 transition-colors shadow-sm">
               Book Another
             </Link>
-            <Link
-              to="/demos/medical"
-              className="carbon-btn carbon-btn-ghost flex items-center justify-center gap-2 w-full text-white/40 hover:text-white"
-            >
+            <Link to="/demos/medical" className="w-full py-3 text-gray-400 text-sm text-center hover:text-gray-600 transition-colors">
               Back to Home
             </Link>
           </div>
@@ -114,33 +93,32 @@ export default function MedicalBooking() {
   }
 
   return (
-    <div className="min-h-screen bg-carbon-gray-100 text-white font-plex">
-      {/* Top Bar */}
-      <nav className="sticky top-0 z-30 flex items-center justify-between px-6 lg:px-12 h-12 border-b border-white/5 bg-carbon-gray-100/95 backdrop-blur-sm">
-        <Link to="/demos/medical/doctors" className="flex items-center gap-2 text-white/40 hover:text-white text-sm transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          <span>Doctors</span>
-        </Link>
-        <h1 className="text-sm font-semibold tracking-tight">Book Appointment</h1>
-        <span className="text-xs text-white/30 font-plex-mono">Step {currentStep + 1}/4</span>
+    <div className="min-h-screen bg-[#F8FAFB] text-[#1A1A2E]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+
+      {/* Nav */}
+      <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div className="max-w-3xl mx-auto flex items-center justify-between px-6 h-16">
+          <Link to="/demos/medical/doctors" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            <span>Doctors</span>
+          </Link>
+          <h1 className="text-base font-semibold">Book Appointment</h1>
+          <span className="text-xs text-gray-400">Step {currentStep + 1}/4</span>
+        </div>
       </nav>
 
-      {/* Progress Bar */}
-      <div className="border-b border-white/5">
-        <div className="max-w-3xl mx-auto flex">
+      {/* Progress */}
+      <div className="bg-white border-b border-gray-100">
+        <div className="max-w-3xl mx-auto flex px-2">
           {steps.map((step, i) => (
             <div
               key={i}
-              className={`flex-1 flex items-center gap-2 px-4 py-3 text-xs border-b-2 transition-all ${
-                i === currentStep
-                  ? 'border-carbon-teal-40 text-white'
-                  : i < currentStep
-                    ? 'border-carbon-teal-40/30 text-white/60'
-                    : 'border-transparent text-white/20'
+              className={`flex-1 flex items-center justify-center gap-2 px-3 py-3 text-xs transition-all ${
+                i === currentStep ? 'text-teal-600 font-medium' : i < currentStep ? 'text-teal-400' : 'text-gray-300'
               }`}
             >
-              <span className={`w-5 h-5 flex items-center justify-center text-[10px] font-plex-mono ${
-                i < currentStep ? 'bg-carbon-teal-40/20 text-carbon-teal-40' : i === currentStep ? 'bg-carbon-teal-40 text-carbon-gray-100' : 'bg-white/5'
+              <span className={`w-6 h-6 flex items-center justify-center text-[11px] rounded-lg font-medium ${
+                i < currentStep ? 'bg-teal-100 text-teal-600' : i === currentStep ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-400'
               }`}>
                 {i < currentStep ? '✓' : i + 1}
               </span>
@@ -148,72 +126,65 @@ export default function MedicalBooking() {
             </div>
           ))}
         </div>
+        {/* Progress bar */}
+        <div className="h-0.5 bg-gray-100">
+          <motion.div
+            className="h-full bg-teal-500"
+            initial={{ width: '0%' }}
+            animate={{ width: `${((currentStep) / 3) * 100}%` }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
       </div>
 
       <div className="max-w-3xl mx-auto px-6 py-8">
         <AnimatePresence mode="wait">
-          {/* Step 0: Select Doctor */}
+          {/* Step 0: Doctor */}
           {currentStep === 0 && (
-            <motion.div
-              key="step0"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-            >
-              <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-4">Select a Doctor</p>
+            <motion.div key="s0" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -15 }} transition={{ duration: 0.2 }}>
+              <p className="text-sm text-gray-400 mb-4">Select a doctor for your appointment</p>
               <div className="space-y-2">
                 {doctors.map(doc => (
                   <button
                     key={doc.id}
                     onClick={() => setSelectedDoctor(doc)}
-                    className={`w-full text-left p-4 border transition-all flex items-center gap-4 ${
+                    className={`w-full text-left p-4 rounded-xl border transition-all flex items-center gap-4 ${
                       selectedDoctor?.id === doc.id
-                        ? 'border-carbon-teal-40 bg-carbon-teal-40/5'
-                        : 'border-white/5 bg-white/[0.02] hover:bg-white/[0.04]'
+                        ? 'border-teal-500 bg-teal-50 shadow-sm'
+                        : 'border-gray-100 bg-white hover:border-gray-200'
                     }`}
                   >
-                    <div className="w-10 h-10 bg-gradient-to-br from-teal-600 to-teal-400 flex items-center justify-center flex-shrink-0">
-                      <span className="text-sm font-light text-white">{doc.name.split(' ').slice(-1)[0][0]}</span>
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm font-semibold text-white">{doc.name.split(' ').slice(-1)[0][0]}</span>
                     </div>
-                    <div className="flex-grow min-w-0">
+                    <div className="flex-grow">
                       <p className="text-sm font-semibold">{doc.name}</p>
-                      <p className="text-xs text-white/40">{doc.title} · £{doc.consultationFee}</p>
+                      <p className="text-xs text-gray-400">{doc.title} · ${doc.consultationFee}</p>
                     </div>
-                    {selectedDoctor?.id === doc.id && (
-                      <CheckCircle className="w-5 h-5 text-carbon-teal-40 flex-shrink-0" />
-                    )}
+                    {selectedDoctor?.id === doc.id && <CheckCircle className="w-5 h-5 text-teal-600 flex-shrink-0" />}
                   </button>
                 ))}
               </div>
             </motion.div>
           )}
 
-          {/* Step 1: Date & Time */}
+          {/* Step 1: Date/Time */}
           {currentStep === 1 && (
-            <motion.div
-              key="step1"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-            >
-              <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-4">
-                <Calendar className="w-3.5 h-3.5 inline mr-1" /> Select Date
-              </p>
+            <motion.div key="s1" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -15 }} transition={{ duration: 0.2 }}>
+              <p className="text-sm text-gray-400 mb-4 flex items-center gap-2"><Calendar className="w-4 h-4" /> Pick a date</p>
               <div className="grid grid-cols-7 gap-2 mb-8">
                 {dates.map(d => (
                   <button
                     key={d.value}
                     onClick={() => { setSelectedDate(d.value); setSelectedTime(''); }}
-                    className={`flex flex-col items-center py-3 text-center transition-all ${
+                    className={`flex flex-col items-center py-3 rounded-xl text-center transition-all ${
                       selectedDate === d.value
-                        ? 'bg-carbon-teal-40 text-carbon-gray-100'
-                        : 'bg-white/[0.03] text-white/50 hover:bg-white/[0.06]'
+                        ? 'bg-teal-600 text-white shadow-md shadow-teal-600/20'
+                        : 'bg-white border border-gray-100 text-gray-500 hover:border-teal-200'
                     }`}
                   >
                     <span className="text-[10px] uppercase">{d.day}</span>
-                    <span className="text-lg font-plex-mono font-medium">{d.date}</span>
+                    <span className="text-lg font-semibold">{d.date}</span>
                     <span className="text-[10px]">{d.month}</span>
                   </button>
                 ))}
@@ -221,18 +192,16 @@ export default function MedicalBooking() {
 
               {selectedDate && (
                 <>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-4">
-                    <Clock className="w-3.5 h-3.5 inline mr-1" /> Select Time
-                  </p>
+                  <p className="text-sm text-gray-400 mb-4 flex items-center gap-2"><Clock className="w-4 h-4" /> Select a time</p>
                   <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
                     {availableTimes.map(time => (
                       <button
                         key={time}
                         onClick={() => setSelectedTime(time)}
-                        className={`py-2.5 text-sm font-plex-mono transition-all ${
+                        className={`py-2.5 text-sm rounded-xl transition-all font-mono ${
                           selectedTime === time
-                            ? 'bg-carbon-teal-40 text-carbon-gray-100 font-semibold'
-                            : 'bg-white/[0.03] text-white/50 hover:bg-white/[0.06]'
+                            ? 'bg-teal-600 text-white font-medium shadow-md shadow-teal-600/20'
+                            : 'bg-white border border-gray-100 text-gray-500 hover:border-teal-200'
                         }`}
                       >
                         {time}
@@ -244,136 +213,107 @@ export default function MedicalBooking() {
             </motion.div>
           )}
 
-          {/* Step 2: Patient Details */}
+          {/* Step 2: Details */}
           {currentStep === 2 && (
-            <motion.div
-              key="step2"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-            >
-              <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-4">
-                <User className="w-3.5 h-3.5 inline mr-1" /> Patient Information
-              </p>
-              <div className="space-y-4">
+            <motion.div key="s2" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -15 }} transition={{ duration: 0.2 }}>
+              <p className="text-sm text-gray-400 mb-6 flex items-center gap-2"><User className="w-4 h-4" /> Your information</p>
+              <div className="space-y-5">
                 {[
                   { key: 'name', label: 'Full Name', type: 'text', placeholder: 'John Doe' },
-                  { key: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
-                  { key: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+44 7911 123456' },
+                  { key: 'email', label: 'Email', type: 'email', placeholder: 'john@example.com.au' },
+                  { key: 'phone', label: 'Phone', type: 'tel', placeholder: '+61 4XX XXX XXX' },
                 ].map(field => (
                   <div key={field.key}>
-                    <label className="block text-xs font-medium text-white/50 mb-2 uppercase tracking-wider">{field.label}</label>
+                    <label className="block text-xs font-medium text-gray-500 mb-2">{field.label}</label>
                     <input
                       type={field.type}
                       value={patientInfo[field.key]}
                       onChange={e => setPatientInfo(prev => ({ ...prev, [field.key]: e.target.value }))}
                       placeholder={field.placeholder}
-                      className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/15 focus:outline-none focus:border-carbon-teal-40/50 transition-colors"
+                      className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
                     />
                   </div>
                 ))}
                 <div>
-                  <label className="block text-xs font-medium text-white/50 mb-2 uppercase tracking-wider">
-                    <FileText className="w-3 h-3 inline mr-1" /> Notes (Optional)
-                  </label>
+                  <label className="block text-xs font-medium text-gray-500 mb-2 flex items-center gap-1"><FileText className="w-3 h-3" /> Notes (Optional)</label>
                   <textarea
                     value={patientInfo.notes}
                     onChange={e => setPatientInfo(prev => ({ ...prev, notes: e.target.value }))}
                     rows={3}
-                    placeholder="Any symptoms, concerns, or information for the doctor..."
-                    className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm text-white placeholder:text-white/15 focus:outline-none focus:border-carbon-teal-40/50 transition-colors resize-none"
+                    placeholder="Any symptoms or concerns..."
+                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all resize-none"
                   />
                 </div>
               </div>
             </motion.div>
           )}
 
-          {/* Step 3: Confirm */}
+          {/* Step 3: Review */}
           {currentStep === 3 && (
-            <motion.div
-              key="step3"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.25 }}
-            >
-              <p className="text-xs uppercase tracking-[0.2em] text-white/30 mb-4">Review & Confirm</p>
-              <div className="bg-white/[0.03] border border-white/5 p-6 space-y-4">
-                <div className="flex justify-between text-sm">
-                  <span className="text-white/40">Doctor</span>
-                  <span>{selectedDoctor?.name}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-white/40">Specialisation</span>
-                  <span>{selectedDoctor?.title}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-white/40">Date</span>
-                  <span className="font-plex-mono">{selectedDate}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-white/40">Time</span>
-                  <span className="font-plex-mono">{selectedTime}</span>
-                </div>
-                <div className="border-t border-white/5 pt-4 flex justify-between text-sm">
-                  <span className="text-white/40">Patient</span>
-                  <span>{patientInfo.name}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-white/40">Email</span>
-                  <span className="text-white/60">{patientInfo.email}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-white/40">Phone</span>
-                  <span className="font-plex-mono text-white/60">{patientInfo.phone}</span>
-                </div>
-                {patientInfo.notes && (
-                  <div className="border-t border-white/5 pt-4">
-                    <span className="text-xs text-white/40 block mb-1">Notes</span>
-                    <p className="text-sm text-white/60">{patientInfo.notes}</p>
+            <motion.div key="s3" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -15 }} transition={{ duration: 0.2 }}>
+              <p className="text-sm text-gray-400 mb-4">Review your appointment details</p>
+              <div className="bg-white rounded-2xl border border-gray-100 p-6 space-y-4 shadow-sm">
+                {[
+                  ['Doctor', selectedDoctor?.name],
+                  ['Specialisation', selectedDoctor?.title],
+                  ['Date', selectedDate],
+                  ['Time', selectedTime],
+                ].map(([l, v]) => (
+                  <div key={l} className="flex justify-between text-sm">
+                    <span className="text-gray-400">{l}</span><span className="font-medium">{v}</span>
                   </div>
-                )}
-                <div className="border-t border-white/5 pt-4 flex justify-between">
+                ))}
+                <div className="border-t border-gray-100 pt-4 space-y-3">
+                  {[
+                    ['Patient', patientInfo.name],
+                    ['Email', patientInfo.email],
+                    ['Phone', patientInfo.phone],
+                  ].map(([l, v]) => (
+                    <div key={l} className="flex justify-between text-sm">
+                      <span className="text-gray-400">{l}</span><span className="text-gray-500">{v}</span>
+                    </div>
+                  ))}
+                  {patientInfo.notes && (
+                    <div><span className="text-xs text-gray-400 block mb-1">Notes</span><p className="text-sm text-gray-500">{patientInfo.notes}</p></div>
+                  )}
+                </div>
+                <div className="border-t border-gray-100 pt-4 flex justify-between">
                   <span className="font-semibold">Consultation Fee</span>
-                  <span className="font-plex-mono font-bold text-lg text-carbon-teal-40">£{selectedDoctor?.consultationFee}</span>
+                  <span className="text-xl font-semibold text-teal-600">${selectedDoctor?.consultationFee}</span>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Navigation Buttons */}
-        <div className="flex items-center justify-between mt-8 pt-6 border-t border-white/5">
+        {/* Navigation */}
+        <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
           <button
             onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
             disabled={currentStep === 0}
-            className={`carbon-btn carbon-btn-ghost flex items-center gap-2 ${currentStep === 0 ? 'opacity-20 cursor-not-allowed' : ''}`}
+            className={`flex items-center gap-2 text-sm text-gray-400 hover:text-gray-700 transition-colors ${currentStep === 0 ? 'opacity-20 cursor-not-allowed' : ''}`}
           >
-            <ArrowLeft className="w-4 h-4" />
-            Previous
+            <ArrowLeft className="w-4 h-4" /> Previous
           </button>
 
           {currentStep < 3 ? (
             <button
               onClick={() => setCurrentStep(prev => prev + 1)}
               disabled={!canProceed()}
-              className={`carbon-btn inline-flex items-center gap-2 px-6 ${
+              className={`inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-xl transition-all ${
                 canProceed()
-                  ? 'bg-carbon-teal-40 text-carbon-gray-100 hover:bg-carbon-teal-50'
-                  : 'bg-white/5 text-white/20 cursor-not-allowed'
+                  ? 'bg-teal-600 text-white hover:bg-teal-500 shadow-sm'
+                  : 'bg-gray-100 text-gray-300 cursor-not-allowed'
               }`}
             >
-              Next
-              <ArrowRight className="w-4 h-4" />
+              Next <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
             <button
               onClick={handleConfirm}
-              className="carbon-btn inline-flex items-center gap-2 px-6 bg-carbon-teal-40 text-carbon-gray-100 hover:bg-carbon-teal-50"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-teal-600 text-white text-sm font-semibold rounded-xl hover:bg-teal-500 transition-colors shadow-sm"
             >
-              Confirm Booking
-              <CheckCircle className="w-4 h-4" />
+              Confirm Booking <CheckCircle className="w-4 h-4" />
             </button>
           )}
         </div>

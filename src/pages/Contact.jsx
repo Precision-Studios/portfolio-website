@@ -248,7 +248,7 @@ export default function Contact() {
             <footer className="border-t border-white/5 py-8 px-4 lg:px-8">
                 <div className="max-w-[1584px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-xs text-white/15 tracking-wider">
-                        © {new Date().getFullYear()} Precision Studios. All rights reserved.
+                        © {new Date().getFullYear()} Precision Studios. All rights reserved. ABN: 89 198 004 110
                     </p>
                     <p className="text-xs text-white/15 tracking-wider flex items-center gap-2">
                         <MapPin className="w-3 h-3" />

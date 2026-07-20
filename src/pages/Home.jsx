@@ -463,7 +463,7 @@ export default function Home() {
           {/* Bottom */}
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-white/15 tracking-wider">
-              © {new Date().getFullYear()} Precision Studios. All rights reserved. ABN pending.
+              © {new Date().getFullYear()} Precision Studios. All rights reserved. ABN: 89 198 004 110
             </p>
             <p className="text-xs text-white/15 tracking-wider flex items-center gap-2">
               <MapPin className="w-3 h-3" />

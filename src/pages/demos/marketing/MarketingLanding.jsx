@@ -66,29 +66,29 @@ function ScoreRing({ score, size = 48 }) {
 export default function MarketingLanding() {
   return (
     <div
-      className="min-h-screen bg-[#0F1419] text-[#E8EDF2] overflow-hidden"
+      className="demo-page min-h-screen bg-[#0F1419] text-[#E8EDF2] overflow-x-hidden"
       style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
     >
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-[#0F1419]/95 backdrop-blur-md border-b border-[#2A3441]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
           <Link
             to="/demos"
-            className="flex items-center gap-2 text-[#6B7A8D] hover:text-[#E8EDF2] text-sm transition-colors"
+            className="flex items-center gap-2 text-[#6B7A8D] hover:text-[#E8EDF2] text-sm transition-colors shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>All Demos</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 flex items-center justify-center bg-[#00D4AA]/10 border border-[#00D4AA]/30">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-8 h-8 flex items-center justify-center bg-[#00D4AA]/10 border border-[#00D4AA]/30 shrink-0">
               <BarChart3 className="w-4 h-4 text-[#00D4AA]" />
             </div>
-            <div>
-              <span className="text-sm font-semibold tracking-tight block leading-tight">{agencyInfo.name}</span>
-              <span className="text-[10px] text-[#6B7A8D] font-mono uppercase tracking-wider">SEO Platform</span>
+            <div className="min-w-0">
+              <span className="text-sm sm:text-base font-semibold tracking-tight block leading-tight truncate max-w-[42vw] sm:max-w-none">{agencyInfo.name}</span>
+              <span className="text-[10px] text-[#6B7A8D] font-mono uppercase tracking-wider hidden sm:block">SEO Platform</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-[#6B7A8D]">
+          <div className="flex items-center gap-2 text-xs text-[#6B7A8D] shrink-0">
             <span className="hidden sm:inline">Built by</span>
             <Link to="/" className="font-semibold text-[#00D4AA] hover:text-[#00D4AA]/80 transition-colors">
               Precision Studios
@@ -110,7 +110,7 @@ export default function MarketingLanding() {
         />
         <div className="absolute top-20 right-0 w-96 h-96 bg-[#00D4AA]/5 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -223,6 +223,31 @@ export default function MarketingLanding() {
               </div>
             </motion.div>
           </div>
+
+          {/* Mobile metrics preview scroll */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="block lg:hidden mt-10"
+          >
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin-x -mx-4 px-4 sm:-mx-6 sm:px-6">
+              {heroMetricsPreview.map((metric, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-[72vw] max-w-[220px] bg-[#1A2128] border border-[#2A3441] p-4"
+                >
+                  <p className="text-[10px] font-mono text-[#6B7A8D] uppercase tracking-wider mb-2">
+                    {metric.label}
+                  </p>
+                  <p className="text-2xl font-semibold font-mono text-[#E8EDF2] mb-1">{metric.value}</p>
+                  <span className={`text-xs font-mono ${metric.positive ? 'text-[#00D4AA]' : 'text-red-400'}`}>
+                    {metric.change}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -254,7 +279,7 @@ export default function MarketingLanding() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -293,7 +318,7 @@ export default function MarketingLanding() {
       </section>
 
       {/* Client Portfolio */}
-      <section className="py-16 px-6 bg-[#161B22] border-y border-[#2A3441]">
+      <section className="py-16 px-4 sm:px-6 bg-[#161B22] border-y border-[#2A3441]">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -342,7 +367,7 @@ export default function MarketingLanding() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 border-t border-[#2A3441]">
+      <section className="py-20 px-4 sm:px-6 border-t border-[#2A3441]">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-2">
@@ -363,7 +388,7 @@ export default function MarketingLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 text-center text-[10px] font-mono tracking-wider text-[#6B7A8D] border-t border-[#2A3441]">
+      <footer className="py-8 px-4 sm:px-6 text-center text-[10px] font-mono tracking-wider text-[#6B7A8D] border-t border-[#2A3441]">
         <p>
           WHITELABEL DEMO / {agencyInfo.name.toUpperCase()} / BUILT BY{' '}
           <Link to="/" className="text-[#00D4AA] hover:underline">

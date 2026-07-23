@@ -75,7 +75,7 @@ export default function PetsBooking() {
 
   if (bookingConfirmed) {
     return (
-      <div className="min-h-screen bg-[#FFF9F2] text-[#3D4A3F] flex items-center justify-center px-6" style={fontStyle}>
+      <div className="demo-page min-h-screen bg-[#FFF9F2] text-[#3D4A3F] flex items-center justify-center px-4 sm:px-6 overflow-x-hidden" style={fontStyle}>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -119,17 +119,17 @@ export default function PetsBooking() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FFF9F2] text-[#3D4A3F]" style={fontStyle}>
+    <div className="demo-page min-h-screen bg-[#FFF9F2] text-[#3D4A3F] overflow-x-hidden" style={fontStyle}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#FFF9F2]/90 backdrop-blur-md border-b border-[#5B8C6A]/10">
-        <div className="max-w-3xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/pets" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors">
+        <div className="max-w-3xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/pets" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span>{petCenterInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{petCenterInfo.name}</span>
           </Link>
-          <h1 className="text-base font-bold">Book Appointment</h1>
-          <span className="text-xs text-[#5B8C6A]/50 font-semibold">Step {currentStep + 1}/4</span>
+          <h1 className="text-sm sm:text-base font-bold min-w-0 truncate">Book Appointment</h1>
+          <span className="text-xs text-[#5B8C6A]/50 font-semibold shrink-0">Step {currentStep + 1}/4</span>
         </div>
       </nav>
 
@@ -162,7 +162,7 @@ export default function PetsBooking() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 py-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
         <AnimatePresence mode="wait">
           {/* Step 0: Pet */}
           {currentStep === 0 && (

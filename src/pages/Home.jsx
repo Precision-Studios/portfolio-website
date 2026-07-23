@@ -109,7 +109,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 pointer-events-none portfolio-hero-grid" />
 
         <div className="relative z-10 max-w-[1584px] mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 min-h-[72vh] items-center py-12 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 min-h-0 lg:min-h-[68vh] items-center py-8 sm:py-12 lg:py-16">
             <motion.div
               {...fadeUp}
               {...heroTransition}
@@ -130,12 +130,12 @@ export default function Home() {
                 We build enterprise-grade software for local Australian businesses - from medical clinics in Sydney to cafés in Melbourne. Custom-engineered platforms that bring in customers and cut operational costs.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link to="/demos" className="carbon-btn carbon-btn-primary inline-flex items-center gap-3 px-8">
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <Link to="/demos" className="carbon-btn carbon-btn-primary inline-flex items-center justify-center gap-3 px-8 w-full sm:w-auto">
                   <span>View Live Demos</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link to="/contact" className="carbon-btn carbon-btn-secondary inline-flex items-center gap-3 px-8">
+                <Link to="/contact" className="carbon-btn carbon-btn-secondary inline-flex items-center justify-center gap-3 px-8 w-full sm:w-auto">
                   <span>Book a Consultation</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -145,14 +145,14 @@ export default function Home() {
             <motion.div
               {...fadeUpDelayed(0.08)}
               {...heroTransition}
-              className="hidden lg:block"
+              className="lg:col-start-2 lg:row-start-1"
             >
               <div className="hero-industry-grid grid grid-cols-2 gap-px bg-hairline border border-hairline">
                 {industries.slice(0, 4).map((ind, i) => (
                   <Link
                     key={i}
                     to={ind.link}
-                    className="group p-8 bg-canvas hover:bg-surface-1 transition-colors"
+                    className="group p-4 sm:p-6 lg:p-8 bg-canvas hover:bg-surface-1 transition-colors"
                   >
                     <IconBox icon={ind.icon} />
                     <h3 className="text-sm font-semibold mb-1 tracking-tight mt-4 text-ink">{ind.name}</h3>
@@ -178,7 +178,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={viewportOnce}
               {...staggerTransition(i)}
-              className="px-8 py-8 text-center border-r border-hairline last:border-r-0"
+              className="px-4 py-6 sm:px-8 sm:py-8 text-center border-r border-b sm:border-b-0 border-hairline even:border-r-0 sm:even:border-r md:last:border-r-0"
             >
               <p className="text-3xl md:text-4xl font-light font-plex-mono text-primary mb-1">{stat.value}</p>
               <p className="text-caption text-ink-muted">{stat.label}</p>
@@ -188,7 +188,7 @@ export default function Home() {
       </section>
 
       {/* Solutions */}
-      <section className="relative z-10 py-24 lg:py-32">
+      <section className="relative z-10 py-16 sm:py-24 lg:py-32">
         <div className="max-w-[1584px] mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
@@ -198,7 +198,7 @@ export default function Home() {
             className="mb-16"
           >
             <p className="text-sm text-primary mb-3">What we build</p>
-            <h2 className="text-display-md font-light tracking-tight leading-tight mb-4 text-ink">
+            <h2 className="text-[clamp(1.75rem,5vw,2.625rem)] font-light tracking-tight leading-tight mb-4 text-ink">
               Solutions engineered for<br />
               <span className="text-ink-muted">Australian business.</span>
             </h2>
@@ -237,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* Industries */}
-      <section className="relative z-10 py-24 lg:py-32 border-t border-hairline bg-surface-1">
+      <section className="relative z-10 py-16 sm:py-24 lg:py-32 border-t border-hairline bg-surface-1">
         <div className="max-w-[1584px] mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0 }}
@@ -247,7 +247,7 @@ export default function Home() {
             className="mb-16"
           >
             <p className="text-sm text-primary mb-3">Industries we serve</p>
-            <h2 className="text-display-md font-light tracking-tight leading-tight mb-4 text-ink">
+            <h2 className="text-[clamp(1.75rem,5vw,2.625rem)] font-light tracking-tight leading-tight mb-4 text-ink">
               Purpose-built for<br />
               <span className="text-ink-muted">your industry.</span>
             </h2>
@@ -375,17 +375,17 @@ export default function Home() {
                 Book a free 15-minute consultation. We'll show you exactly what we'd build - no obligation.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Link
                 to="/contact"
-                className="carbon-btn inline-flex items-center gap-3 px-8 bg-canvas text-ink hover:bg-surface-1 font-medium"
+                className="carbon-btn inline-flex items-center justify-center gap-3 px-8 bg-canvas text-ink hover:bg-surface-1 font-medium w-full sm:w-auto"
               >
                 <span>Book a Free Consultation</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/demos"
-                className="carbon-btn inline-flex items-center gap-3 px-8 bg-transparent text-white hover:bg-white/10 border border-white/40"
+                className="carbon-btn inline-flex items-center justify-center gap-3 px-8 bg-transparent text-white hover:bg-white/10 border border-white/40 w-full sm:w-auto"
               >
                 <span>View Demos First</span>
               </Link>

@@ -57,25 +57,25 @@ const fontStyle = { fontFamily: "'Nunito', 'Segoe UI', system-ui, sans-serif" };
 
 export default function PetsLanding() {
   return (
-    <div className="min-h-screen bg-[#FFF9F2] text-[#3D4A3F]" style={fontStyle}>
+    <div className="demo-page min-h-screen bg-[#FFF9F2] text-[#3D4A3F] overflow-x-hidden" style={fontStyle}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-[#FFF9F2]/90 backdrop-blur-md border-b border-[#5B8C6A]/10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
             <span>All Demos</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#5B8C6A] flex items-center justify-center shadow-md shadow-[#5B8C6A]/20">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-10 h-10 rounded-2xl bg-[#5B8C6A] flex items-center justify-center shadow-md shadow-[#5B8C6A]/20 shrink-0">
               <PawPrint className="w-5 h-5 text-white" />
             </div>
-            <div>
-              <span className="text-sm font-bold tracking-tight block leading-tight text-[#3D4A3F]">{petCenterInfo.name}</span>
-              <span className="text-[10px] text-[#5B8C6A]/70">Pet Care Platform</span>
+            <div className="min-w-0">
+              <span className="text-sm sm:text-base font-bold tracking-tight block leading-tight text-[#3D4A3F] truncate max-w-[42vw] sm:max-w-none">{petCenterInfo.name}</span>
+              <span className="text-[10px] text-[#5B8C6A]/70 hidden sm:block">Pet Care Platform</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-[#5B8C6A]/50">
+          <div className="flex items-center gap-2 text-xs text-[#5B8C6A]/50 shrink-0">
             <span className="hidden sm:inline">Built by</span>
             <Link to="/" className="font-bold text-[#E8846B] hover:text-[#d4735c] transition-colors">Precision Studios</Link>
           </div>
@@ -95,7 +95,7 @@ export default function PetsLanding() {
         <div className="absolute top-20 right-10 w-64 h-64 bg-[#E8846B]/20 rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-10 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 lg:py-28">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -164,6 +164,37 @@ export default function PetsLanding() {
               <p className="text-xs text-white/40 text-center pt-2">{pets.length} pets on file</p>
             </motion.div>
           </div>
+
+          {/* Mobile pet preview scroll */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="block lg:hidden mt-10"
+          >
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin-x -mx-4 px-4 sm:-mx-6 sm:px-6">
+              {pets.slice(0, 3).map((pet, i) => (
+                <Link
+                  key={pet.id}
+                  to="/demos/pets/profiles"
+                  className="flex-shrink-0 w-[72vw] max-w-[260px] flex items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/15"
+                >
+                  <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 ${
+                    i === 0 ? 'bg-[#E8846B]' : i === 1 ? 'bg-white/25' : 'bg-[#5B8C6A]'
+                  }`}>
+                    <PawPrint className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold text-white truncate">{pet.name}</p>
+                    <p className="text-xs text-white/50 truncate">{pet.breed} · {pet.age}</p>
+                  </div>
+                  <span className="text-xs text-white/60 font-medium shrink-0">
+                    {pet.owner.name.split(' ')[0]}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -192,7 +223,7 @@ export default function PetsLanding() {
       </section>
 
       {/* Services */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -238,7 +269,7 @@ export default function PetsLanding() {
       </section>
 
       {/* Features */}
-      <section className="py-20 px-6 bg-white border-y border-[#5B8C6A]/10">
+      <section className="py-20 px-4 sm:px-6 bg-white border-y border-[#5B8C6A]/10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -274,7 +305,7 @@ export default function PetsLanding() {
       </section>
 
       {/* Staff teaser */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <div className="flex items-center gap-2 text-[#5B8C6A] mb-3">
@@ -299,7 +330,7 @@ export default function PetsLanding() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-gradient-to-r from-[#5B8C6A] to-[#4a7558]">
+      <section className="py-20 px-4 sm:px-6 bg-gradient-to-r from-[#5B8C6A] to-[#4a7558]">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2">
@@ -320,7 +351,7 @@ export default function PetsLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 text-center text-xs tracking-wider text-[#5B8C6A]/50 bg-white border-t border-[#5B8C6A]/10">
+      <footer className="py-8 px-4 sm:px-6 text-center text-xs tracking-wider text-[#5B8C6A]/50 bg-white border-t border-[#5B8C6A]/10">
         <p>WHITELABEL DEMO · {petCenterInfo.name.toUpperCase()} · BUILT BY <Link to="/" className="text-[#E8846B] hover:underline font-bold">PRECISION STUDIOS</Link></p>
       </footer>
     </div>

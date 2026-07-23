@@ -20,17 +20,17 @@ export default function CafeDashboard() {
   const nextStatus = { pending: 'preparing', preparing: 'ready', ready: 'completed' };
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8] text-[#2C1810]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#F5F0E8] text-[#2C1810] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#F5F0E8]/90 backdrop-blur-md border-b border-[#E0D5C5]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
-          <Link to="/demos/cafe" className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
+          <Link to="/demos/cafe" className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{cafeInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{cafeInfo.name}</span>
           </Link>
-          <h1 className="text-base font-semibold" style={{ fontFamily: "'Georgia', serif" }}>Kitchen Dashboard</h1>
-          <div className="flex items-center gap-2">
+          <h1 className="text-sm sm:text-base font-semibold min-w-0 truncate" style={{ fontFamily: "'Georgia', serif" }}>Kitchen Dashboard</h1>
+          <div className="flex items-center gap-2 shrink-0">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-xs text-[#8B7355]">Live</span>
           </div>
@@ -39,7 +39,7 @@ export default function CafeDashboard() {
 
       {/* Tabs */}
       <div className="border-b border-[#E0D5C5] bg-[#F5F0E8]/90 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto flex px-6">
+        <div className="max-w-7xl mx-auto flex px-4 sm:px-6">
           {[
             { id: 'orders', label: 'Order Queue', icon: <EggFried className="w-4 h-4" /> },
             { id: 'analytics', label: 'Analytics', icon: <BarChart3 className="w-4 h-4" /> },
@@ -60,7 +60,7 @@ export default function CafeDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {activeTab === 'orders' ? (
           <>
             {/* Stats */}

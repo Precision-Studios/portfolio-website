@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Wifi, Clock, ChefHat, TrendingUp, Star, Coffee, QrCode, ClipboardList, BarChart3, Bell } from 'lucide-react';
+import { ArrowRight, Wifi, Clock, ChefHat, TrendingUp, Star, Coffee, QrCode, ClipboardList, BarChart3, Bell } from 'lucide-react';
+import DemoWhitelabelNav from '../../../components/demos/DemoWhitelabelNav';
 import { cafeInfo } from '../../../data/cafeData';
 
 const features = [
@@ -32,27 +33,20 @@ const features = [
 
 export default function CafeLanding() {
   return (
-    <div className="min-h-screen bg-[#FBF7F0] text-[#2C1810] overflow-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#FBF7F0] text-[#2C1810] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
-      {/* ─── NAV ─── */}
-      <nav className="sticky top-0 z-50 bg-[#FBF7F0]/90 backdrop-blur-md border-b border-[#E8DFD3]">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-14">
-          <Link to="/demos" className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            <span>All Demos</span>
-          </Link>
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C17832] to-[#A05A20] flex items-center justify-center shadow-sm">
-              <Coffee className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-base font-semibold tracking-tight">{cafeInfo.name}</span>
+      <DemoWhitelabelNav
+        brandIcon={
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C17832] to-[#A05A20] flex items-center justify-center shadow-sm shrink-0">
+            <Coffee className="w-5 h-5 text-white" />
           </div>
-          <div className="flex items-center gap-2 text-xs text-[#8B7355]">
-            <span className="hidden sm:inline">Built by</span>
-            <Link to="/" className="font-semibold text-[#C17832] hover:text-[#A05A20] transition-colors">Precision Studios</Link>
-          </div>
-        </div>
-      </nav>
+        }
+        brandName={cafeInfo.name}
+        accentLinkClass="text-[#C17832] hover:text-[#A05A20]"
+        mutedClass="text-[#8B7355]"
+        borderClass="border-[#E8DFD3]"
+        bgClass="bg-[#FBF7F0]/90"
+      />
 
       {/* ─── HERO ─── */}
       <section className="relative">
@@ -60,7 +54,7 @@ export default function CafeLanding() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#3E2723] via-[#4E342E] to-[#2C1810]" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 lg:py-36">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-24 lg:py-36">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -125,7 +119,7 @@ export default function CafeLanding() {
       </section>
 
       {/* ─── HOW IT WORKS ─── */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -161,7 +155,7 @@ export default function CafeLanding() {
       </section>
 
       {/* ─── TESTIMONIAL ─── */}
-      <section className="py-20 px-6 bg-white border-y border-[#E8DFD3]">
+      <section className="py-20 px-4 sm:px-6 bg-white border-y border-[#E8DFD3]">
         <div className="max-w-3xl mx-auto text-center">
           <div className="flex justify-center gap-1 mb-6">
             {[...Array(5)].map((_, i) => (
@@ -176,7 +170,7 @@ export default function CafeLanding() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="py-20 px-6 bg-[#3E2723]">
+      <section className="py-20 px-4 sm:px-6 bg-[#3E2723]">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-light text-white mb-2" style={{ fontFamily: "'Georgia', serif" }}>
@@ -197,7 +191,7 @@ export default function CafeLanding() {
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="py-8 px-6 text-center text-xs tracking-widest text-[#8B7355] border-t border-[#E8DFD3]">
+      <footer className="py-8 px-4 sm:px-6 text-center text-xs tracking-widest text-[#8B7355] border-t border-[#E8DFD3]">
         <p>WHITELABEL DEMO · {cafeInfo.name.toUpperCase()} · BUILT BY <Link to="/" className="text-[#C17832] hover:underline">PRECISION STUDIOS</Link></p>
       </footer>
     </div>

@@ -77,7 +77,7 @@ export default function FlowersOrder() {
     const slotLabel = selectedDateObj?.slots.find(s => s.id === selectedSlot)?.time;
     return (
       <div
-        className="min-h-screen flex items-center justify-center px-6"
+        className="demo-page min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-x-hidden"
         style={{ backgroundColor: CREAM, color: FOREST, fontFamily: "'Jost', sans-serif" }}
       >
         <motion.div
@@ -141,35 +141,35 @@ export default function FlowersOrder() {
 
   return (
     <div
-      className="min-h-screen"
+      className="demo-page min-h-screen overflow-x-hidden"
       style={{ backgroundColor: CREAM, color: FOREST, fontFamily: "'Jost', sans-serif" }}
     >
       <nav
         className="sticky top-0 z-40 backdrop-blur-md border-b"
         style={{ backgroundColor: `${CREAM}e6`, borderColor: BLUSH }}
       >
-        <div className="max-w-2xl mx-auto flex items-center justify-between px-6 h-14">
+        <div className="max-w-2xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm transition-colors"
+            className="flex items-center gap-2 text-sm transition-colors shrink-0"
             style={{ color: SAGE }}
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Catalog</span>
           </button>
           <h1
-            className="text-base tracking-wide"
+            className="text-sm sm:text-base tracking-wide min-w-0 truncate"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
           >
             Checkout
           </h1>
-          <span className="text-sm" style={{ color: SAGE }}>
+          <span className="text-sm shrink-0" style={{ color: SAGE }}>
             {cartCount} items
           </span>
         </div>
       </nav>
 
-      <div className="max-w-2xl mx-auto px-6 py-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {cart.length === 0 ? (
           <div className="text-center py-20">
             <Truck className="w-12 h-12 mx-auto mb-6 opacity-30" />

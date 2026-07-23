@@ -43,17 +43,17 @@ export default function PetsProfiles() {
   const filtered = activeFilter === 'all' ? pets : pets.filter(p => p.species === activeFilter);
 
   return (
-    <div className="min-h-screen bg-[#FFF9F2] text-[#3D4A3F]" style={fontStyle}>
+    <div className="demo-page min-h-screen bg-[#FFF9F2] text-[#3D4A3F] overflow-x-hidden" style={fontStyle}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#FFF9F2]/90 backdrop-blur-md border-b border-[#5B8C6A]/10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/pets" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/pets" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{petCenterInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{petCenterInfo.name}</span>
           </Link>
-          <h1 className="text-base font-bold tracking-tight">Pet Profiles</h1>
-          <span className="text-xs text-[#5B8C6A]/50 font-semibold">{pets.length} registered</span>
+          <h1 className="text-sm sm:text-base font-bold tracking-tight min-w-0 truncate">Pet Profiles</h1>
+          <span className="text-xs text-[#5B8C6A]/50 font-semibold shrink-0">{pets.length} registered</span>
         </div>
       </nav>
 
@@ -81,7 +81,7 @@ export default function PetsProfiles() {
       </div>
 
       {/* Pet Grid */}
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {filtered.map((pet, i) => {
             const SpeciesIcon = speciesIcons[pet.species] || PawPrint;

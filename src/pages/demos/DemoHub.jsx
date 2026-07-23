@@ -81,10 +81,10 @@ export default function DemoHub() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-24">
-        <motion.div {...fadeUp} className="mb-16">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-10 sm:pt-16 pb-16 sm:pb-24">
+        <motion.div {...fadeUp} className="mb-10 sm:mb-16">
           <p className="text-sm text-primary mb-4">Whitelabel demos</p>
-          <h1 className="text-display-lg font-light tracking-tight mb-6 leading-[1.1] text-ink">
+          <h1 className="text-[clamp(2rem,5vw,3.75rem)] font-light tracking-tight mb-6 leading-[1.1] text-ink">
             See what we build<br />
             <span className="text-ink-muted">for businesses like yours.</span>
           </h1>

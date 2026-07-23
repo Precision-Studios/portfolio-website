@@ -33,17 +33,17 @@ export default function PetsDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF9F2] text-[#3D4A3F]" style={fontStyle}>
+    <div className="demo-page min-h-screen bg-[#FFF9F2] text-[#3D4A3F] overflow-x-hidden" style={fontStyle}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#FFF9F2]/90 backdrop-blur-md border-b border-[#5B8C6A]/10">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/pets" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/pets" className="flex items-center gap-2 text-[#5B8C6A]/60 hover:text-[#5B8C6A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{petCenterInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{petCenterInfo.name}</span>
           </Link>
-          <h1 className="text-base font-bold tracking-tight">Staff Dashboard</h1>
-          <div className="flex items-center gap-2">
+          <h1 className="text-sm sm:text-base font-bold tracking-tight min-w-0 truncate">Staff Dashboard</h1>
+          <div className="flex items-center gap-2 shrink-0">
             <span className="w-2 h-2 bg-[#5B8C6A] rounded-full animate-pulse" />
             <span className="text-xs text-[#5B8C6A]/50 font-semibold">Live</span>
           </div>
@@ -73,7 +73,7 @@ export default function PetsDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {activeTab === 'appointments' ? (
           <>
             {/* Stats */}

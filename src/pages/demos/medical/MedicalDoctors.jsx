@@ -27,17 +27,17 @@ export default function MedicalDoctors() {
   const filtered = activeFilter === 'all' ? doctors : doctors.filter(d => d.specialization === activeFilter);
 
   return (
-    <div className="min-h-screen bg-[#F8FAFB] text-[#1A1A2E]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#F8FAFB] text-[#1A1A2E] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/medical" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/medical" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{clinicInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{clinicInfo.name}</span>
           </Link>
-          <h1 className="text-base font-semibold tracking-tight">Our Doctors</h1>
-          <span className="text-xs text-gray-400">{doctors.length} specialists</span>
+          <h1 className="text-sm sm:text-base font-semibold tracking-tight min-w-0 truncate">Our Doctors</h1>
+          <span className="text-xs text-gray-400 shrink-0">{doctors.length} specialists</span>
         </div>
       </nav>
 
@@ -61,7 +61,7 @@ export default function MedicalDoctors() {
       </div>
 
       {/* Doctor Grid */}
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {filtered.map((doctor, i) => (
             <motion.div

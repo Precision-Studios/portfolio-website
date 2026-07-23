@@ -39,17 +39,17 @@ export default function EducationDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E2A4A]" style={sans}>
+    <div className="demo-page min-h-screen bg-[#FAF8F5] text-[#1E2A4A] overflow-x-hidden" style={sans}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#1E2A4A]/10">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/education" className="flex items-center gap-2 text-[#1E2A4A]/50 hover:text-[#1E2A4A] text-sm transition-colors">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/education" className="flex items-center gap-2 text-[#1E2A4A]/50 hover:text-[#1E2A4A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{tuitionCenterInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{tuitionCenterInfo.name}</span>
           </Link>
-          <h1 className="text-base font-semibold tracking-tight" style={serif}>Centre Dashboard</h1>
-          <div className="flex items-center gap-2">
+          <h1 className="text-sm sm:text-base font-semibold tracking-tight min-w-0 truncate" style={serif}>Centre Dashboard</h1>
+          <div className="flex items-center gap-2 shrink-0">
             <span className="w-2 h-2 bg-[#C9A227] rounded-full animate-pulse" />
             <span className="text-xs text-[#1E2A4A]/40 uppercase tracking-widest">Live</span>
           </div>
@@ -78,7 +78,7 @@ export default function EducationDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {activeTab === 'roster' ? (
           <>
             {/* Stats */}

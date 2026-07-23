@@ -47,8 +47,8 @@ export default function Contact() {
                 }}
             />
 
-            <div className="max-w-[1584px] mx-auto px-4 lg:px-8 py-16 lg:py-24">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            <div className="max-w-[1584px] mx-auto px-4 lg:px-8 py-10 sm:py-16 lg:py-24">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24">
 
                     <motion.div {...fadeUp}>
                         <p className="text-sm text-primary mb-4 flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function Contact() {
                     </motion.div>
 
                     <motion.div {...fadeUpDelayed(0.08)}>
-                        <div className="carbon-card p-8 md:p-10">
+                        <div className="carbon-card p-6 sm:p-8 md:p-10">
                             <AnimatePresence mode="wait">
                                 {formStatus === 'success' ? (
                                     <motion.div

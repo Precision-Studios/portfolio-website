@@ -142,6 +142,42 @@ body {
   @apply antialiased;
 }
 
+html.portfolio-theme {
+  overflow-x: hidden;
+}
+
+html.portfolio-theme body {
+  overflow-x: hidden;
+}
+
+/* Responsive utilities */
+.responsive-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-thin-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.demo-page {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (max-width: 639px) {
+  .carbon-btn {
+    min-height: 2.75rem;
+  }
+
+  .hero-slogan {
+    font-size: clamp(1.75rem, 7vw, 2.25rem) !important;
+  }
+}
+
 .hero-slogan {
   display: flex;
   flex-direction: column;

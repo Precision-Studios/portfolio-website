@@ -31,10 +31,10 @@ export default function MvpList() {
         <PortfolioShell>
             <TopNav />
 
-            <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-24">
+            <div className="max-w-7xl mx-auto px-4 lg:px-8 py-10 sm:py-16 lg:py-24">
                 <motion.div {...fadeUp} className="mb-16">
                     <p className="text-sm text-primary mb-4">Projects</p>
-                    <h1 className="text-display-lg font-light tracking-tight mb-6 text-ink">
+                    <h1 className="text-[clamp(2rem,5vw,3.75rem)] font-light tracking-tight mb-6 text-ink">
                         Our <span className="text-ink-muted">MVPs & projects</span>
                     </h1>
                     <p className="text-body-lg text-ink-muted max-w-2xl">

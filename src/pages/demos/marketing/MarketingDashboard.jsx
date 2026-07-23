@@ -73,24 +73,24 @@ export default function MarketingDashboard() {
 
   return (
     <div
-      className="min-h-screen bg-[#0F1419] text-[#E8EDF2]"
+      className="demo-page min-h-screen bg-[#0F1419] text-[#E8EDF2] overflow-x-hidden"
       style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
     >
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#0F1419]/95 backdrop-blur-md border-b border-[#2A3441]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
           <Link
             to="/demos/marketing"
-            className="flex items-center gap-2 text-[#6B7A8D] hover:text-[#E8EDF2] text-sm transition-colors"
+            className="flex items-center gap-2 text-[#6B7A8D] hover:text-[#E8EDF2] text-sm transition-colors shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{agencyInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{agencyInfo.name}</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <BarChart3 className="w-4 h-4 text-[#00D4AA]" />
-            <h1 className="text-sm font-semibold tracking-tight font-mono uppercase">Client Dashboard</h1>
+          <div className="flex items-center gap-2 min-w-0">
+            <BarChart3 className="w-4 h-4 text-[#00D4AA] shrink-0" />
+            <h1 className="text-sm font-semibold tracking-tight font-mono uppercase min-w-0 truncate">Client Dashboard</h1>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <span className="w-2 h-2 bg-[#00D4AA] rounded-full animate-pulse" />
             <span className="text-[10px] font-mono text-[#6B7A8D]">LIVE</span>
           </div>
@@ -121,7 +121,7 @@ export default function MarketingDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {activeTab === 'overview' && (
           <>
             {/* KPI Cards */}
@@ -238,7 +238,7 @@ export default function MarketingDashboard() {
               <div className="px-6 py-4 border-b border-[#2A3441]">
                 <h3 className="text-sm font-semibold font-mono uppercase tracking-wider">Top Landing Pages</h3>
               </div>
-              <div className="overflow-x-auto">
+              <div className="responsive-table-wrap">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-[#2A3441]">
@@ -352,7 +352,7 @@ export default function MarketingDashboard() {
               <h2 className="text-xl font-semibold">Competitor benchmarking</h2>
             </div>
             <div className="bg-[#1A2128] border border-[#2A3441] overflow-hidden">
-              <div className="overflow-x-auto">
+              <div className="responsive-table-wrap">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-[#2A3441]">

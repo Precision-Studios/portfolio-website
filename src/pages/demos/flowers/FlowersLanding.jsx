@@ -44,7 +44,7 @@ const features = [
 export default function FlowersLanding() {
   return (
     <div
-      className="min-h-screen overflow-hidden"
+      className="demo-page min-h-screen overflow-x-hidden"
       style={{ backgroundColor: CREAM, color: FOREST, fontFamily: "'Cormorant Garamond', Georgia, serif" }}
     >
       {/* Nav */}
@@ -52,21 +52,21 @@ export default function FlowersLanding() {
         className="sticky top-0 z-50 backdrop-blur-md border-b"
         style={{ backgroundColor: `${CREAM}e6`, borderColor: BLUSH }}
       >
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
           <Link
             to="/demos"
-            className="flex items-center gap-2 text-sm transition-colors"
+            className="flex items-center gap-2 text-sm transition-colors shrink-0"
             style={{ color: SAGE, fontFamily: "'Jost', sans-serif" }}
           >
             <ArrowLeft className="w-4 h-4" />
             <span>All Demos</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <Flower2 className="w-5 h-5" style={{ color: FOREST }} />
-            <span className="text-lg font-medium tracking-wide">{floristInfo.name}</span>
+          <div className="flex items-center gap-2 min-w-0">
+            <Flower2 className="w-5 h-5 shrink-0" style={{ color: FOREST }} />
+            <span className="text-sm sm:text-base font-medium tracking-wide truncate max-w-[42vw] sm:max-w-none">{floristInfo.name}</span>
           </div>
           <div
-            className="flex items-center gap-2 text-xs"
+            className="flex items-center gap-2 text-xs shrink-0"
             style={{ color: SAGE, fontFamily: "'Jost', sans-serif" }}
           >
             <span className="hidden sm:inline">Built by</span>
@@ -91,7 +91,7 @@ export default function FlowersLanding() {
           style={{ background: `linear-gradient(135deg, transparent 40%, ${BLUSH}22 100%)` }}
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 lg:py-32">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

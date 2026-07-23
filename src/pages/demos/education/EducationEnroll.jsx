@@ -60,7 +60,7 @@ export default function EducationEnroll() {
 
   if (enrollmentConfirmed) {
     return (
-      <div className="min-h-screen bg-[#FAF8F5] text-[#1E2A4A] flex items-center justify-center px-6" style={sans}>
+      <div className="demo-page min-h-screen bg-[#FAF8F5] text-[#1E2A4A] flex items-center justify-center px-4 sm:px-6 overflow-x-hidden" style={sans}>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -104,17 +104,17 @@ export default function EducationEnroll() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E2A4A]" style={sans}>
+    <div className="demo-page min-h-screen bg-[#FAF8F5] text-[#1E2A4A] overflow-x-hidden" style={sans}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#1E2A4A]/10">
-        <div className="max-w-3xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/education/tutors" className="flex items-center gap-2 text-[#1E2A4A]/50 hover:text-[#1E2A4A] text-sm transition-colors">
+        <div className="max-w-3xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/education/tutors" className="flex items-center gap-2 text-[#1E2A4A]/50 hover:text-[#1E2A4A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
             <span>Tutors</span>
           </Link>
-          <h1 className="text-base font-semibold" style={serif}>Enrol Student</h1>
-          <span className="text-xs text-[#1E2A4A]/40">Step {currentStep + 1}/4</span>
+          <h1 className="text-sm sm:text-base font-semibold min-w-0 truncate" style={serif}>Enrol Student</h1>
+          <span className="text-xs text-[#1E2A4A]/40 shrink-0">Step {currentStep + 1}/4</span>
         </div>
       </nav>
 
@@ -147,7 +147,7 @@ export default function EducationEnroll() {
         </div>
       </div>
 
-      <div className="max-w-3xl mx-auto px-6 py-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
         <AnimatePresence mode="wait">
           {/* Step 0: Tutor */}
           {currentStep === 0 && (

@@ -63,30 +63,30 @@ export default function MarketingAudits() {
 
   return (
     <div
-      className="min-h-screen bg-[#0F1419] text-[#E8EDF2]"
+      className="demo-page min-h-screen bg-[#0F1419] text-[#E8EDF2] overflow-x-hidden"
       style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}
     >
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#0F1419]/95 backdrop-blur-md border-b border-[#2A3441]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
           <Link
             to="/demos/marketing"
-            className="flex items-center gap-2 text-[#6B7A8D] hover:text-[#E8EDF2] text-sm transition-colors"
+            className="flex items-center gap-2 text-[#6B7A8D] hover:text-[#E8EDF2] text-sm transition-colors shrink-0"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{agencyInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{agencyInfo.name}</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-[#00D4AA]" />
-            <h1 className="text-sm font-semibold tracking-tight font-mono uppercase">SEO Audits</h1>
+          <div className="flex items-center gap-2 min-w-0">
+            <Shield className="w-4 h-4 text-[#00D4AA] shrink-0" />
+            <h1 className="text-sm font-semibold tracking-tight font-mono uppercase min-w-0 truncate">SEO Audits</h1>
           </div>
-          <Link to="/demos/marketing/dashboard" className="text-xs font-mono text-[#00D4AA] hover:underline">
+          <Link to="/demos/marketing/dashboard" className="text-xs font-mono text-[#00D4AA] hover:underline shrink-0">
             Dashboard
           </Link>
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {/* Audit Selector */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#2A3441] border border-[#2A3441] mb-8">
           {seoAudits.map(audit => (

@@ -48,25 +48,25 @@ const features = [
 
 export default function EducationLanding() {
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1E2A4A]" style={sans}>
+    <div className="demo-page min-h-screen bg-[#FAF8F5] text-[#1E2A4A] overflow-x-hidden" style={sans}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-50 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#1E2A4A]/10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos" className="flex items-center gap-2 text-[#1E2A4A]/50 hover:text-[#1E2A4A] text-sm transition-colors">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos" className="flex items-center gap-2 text-[#1E2A4A]/50 hover:text-[#1E2A4A] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
             <span>All Demos</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-[#1E2A4A] flex items-center justify-center">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 bg-[#1E2A4A] flex items-center justify-center shrink-0">
               <GraduationCap className="w-5 h-5 text-[#C9A227]" />
             </div>
-            <div>
-              <span className="text-sm font-semibold tracking-tight block leading-tight" style={serif}>{tuitionCenterInfo.name}</span>
-              <span className="text-[10px] text-[#1E2A4A]/40 uppercase tracking-widest">Tuition Platform</span>
+            <div className="min-w-0">
+              <span className="text-sm sm:text-base font-semibold tracking-tight block leading-tight truncate max-w-[42vw] sm:max-w-none" style={serif}>{tuitionCenterInfo.name}</span>
+              <span className="text-[10px] text-[#1E2A4A]/40 uppercase tracking-widest hidden sm:block">Tuition Platform</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-[#1E2A4A]/40">
+          <div className="flex items-center gap-2 text-xs text-[#1E2A4A]/40 shrink-0">
             <span className="hidden sm:inline">Built by</span>
             <Link to="/" className="font-semibold text-[#C9A227] hover:text-[#b8921f] transition-colors">Precision Studios</Link>
           </div>
@@ -84,7 +84,7 @@ export default function EducationLanding() {
           }}
         />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 lg:py-28">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <motion.div
               className="lg:col-span-7"
@@ -164,6 +164,38 @@ export default function EducationLanding() {
               </div>
             </motion.div>
           </div>
+
+          {/* Mobile tutor preview scroll */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="block lg:hidden mt-10"
+          >
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin-x -mx-4 px-4 sm:-mx-6 sm:px-6">
+              {tutors.slice(0, 3).map((tutor) => (
+                <Link
+                  key={tutor.id}
+                  to="/demos/education/tutors"
+                  className="flex-shrink-0 w-[72vw] max-w-[260px] flex items-center gap-3 p-4 border border-[#FAF8F5]/10 bg-[#FAF8F5]/5"
+                >
+                  <div className="w-10 h-10 bg-[#2A3A5C] flex items-center justify-center flex-shrink-0 border border-[#C9A227]/20">
+                    <span className="text-xs font-semibold text-[#C9A227]" style={serif}>
+                      {tutor.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm text-[#FAF8F5] font-medium truncate" style={serif}>{tutor.name}</p>
+                    <p className="text-[11px] text-[#FAF8F5]/40 truncate">{tutor.title}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-[11px] text-[#C9A227] shrink-0">
+                    <Star className="w-3 h-3 fill-[#C9A227]" />
+                    <span>{tutor.rating}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -192,7 +224,7 @@ export default function EducationLanding() {
       </section>
 
       {/* Features */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -228,7 +260,7 @@ export default function EducationLanding() {
       </section>
 
       {/* Subjects grid */}
-      <section className="py-16 px-6 bg-white border-y border-[#1E2A4A]/10">
+      <section className="py-16 px-4 sm:px-6 bg-white border-y border-[#1E2A4A]/10">
         <div className="max-w-6xl mx-auto">
           <p className="text-sm text-[#C9A227] font-medium tracking-widest uppercase mb-8 text-center">Subjects Offered</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-[#1E2A4A]/10 border border-[#1E2A4A]/10">
@@ -258,7 +290,7 @@ export default function EducationLanding() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[#1E2A4A]">
+      <section className="py-20 px-4 sm:px-6 bg-[#1E2A4A]">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl text-[#FAF8F5] mb-2" style={serif}>
@@ -279,7 +311,7 @@ export default function EducationLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 text-center text-xs tracking-widest text-[#1E2A4A]/40 bg-[#FAF8F5] border-t border-[#1E2A4A]/10">
+      <footer className="py-8 px-4 sm:px-6 text-center text-xs tracking-widest text-[#1E2A4A]/40 bg-[#FAF8F5] border-t border-[#1E2A4A]/10">
         <p>WHITELABEL DEMO · {tuitionCenterInfo.name.toUpperCase()} · BUILT BY <Link to="/" className="text-[#C9A227] hover:underline">PRECISION STUDIOS</Link></p>
       </footer>
     </div>

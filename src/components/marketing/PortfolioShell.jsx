@@ -19,7 +19,7 @@ export default function PortfolioShell({ children }) {
   }, [isDark]);
 
   return (
-    <div className="min-h-screen bg-canvas text-ink font-plex selection:bg-primary/20">
+    <div className="min-h-screen bg-canvas text-ink font-plex selection:bg-primary/20 overflow-x-hidden">
       {children}
     </div>
   );

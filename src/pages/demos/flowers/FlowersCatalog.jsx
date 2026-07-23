@@ -193,7 +193,7 @@ export default function FlowersCatalog() {
 
   return (
     <div
-      className="min-h-screen"
+      className="demo-page min-h-screen overflow-x-hidden"
       style={{ backgroundColor: CREAM, color: FOREST, fontFamily: "'Jost', sans-serif" }}
     >
       {/* Nav */}
@@ -201,13 +201,13 @@ export default function FlowersCatalog() {
         className="sticky top-0 z-40 backdrop-blur-md border-b"
         style={{ backgroundColor: `${CREAM}e6`, borderColor: BLUSH }}
       >
-        <div className="max-w-5xl mx-auto flex items-center justify-between px-6 h-14">
-          <Link to="/demos/flowers" className="flex items-center gap-2 text-sm transition-colors" style={{ color: SAGE }}>
+        <div className="max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
+          <Link to="/demos/flowers" className="flex items-center gap-2 text-sm transition-colors shrink-0" style={{ color: SAGE }}>
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{floristInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{floristInfo.name}</span>
           </Link>
           <h1
-            className="text-base tracking-wide"
+            className="text-sm sm:text-base tracking-wide min-w-0 truncate"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
           >
             Catalog
@@ -215,7 +215,7 @@ export default function FlowersCatalog() {
           <Link
             to="/demos/flowers/order"
             state={{ cart }}
-            className="relative flex items-center gap-2 transition-colors"
+            className="relative flex items-center gap-2 transition-colors shrink-0"
             style={{ color: SAGE }}
           >
             <ShoppingBag className="w-5 h-5" />
@@ -261,7 +261,7 @@ export default function FlowersCatalog() {
       </div>
 
       {/* Products */}
-      <div className="max-w-5xl mx-auto px-6 py-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}

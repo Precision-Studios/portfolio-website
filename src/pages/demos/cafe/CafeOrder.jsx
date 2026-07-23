@@ -38,7 +38,7 @@ export default function CafeOrder() {
 
   if (orderPlaced) {
     return (
-      <div className="min-h-screen bg-[#FBF7F0] text-[#2C1810] flex items-center justify-center px-6" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+      <div className="demo-page min-h-screen bg-[#FBF7F0] text-[#2C1810] flex items-center justify-center px-4 sm:px-6 overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -80,21 +80,21 @@ export default function CafeOrder() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FBF7F0] text-[#2C1810]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#FBF7F0] text-[#2C1810] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-[#FBF7F0]/90 backdrop-blur-md border-b border-[#E8DFD3]">
-        <div className="max-w-2xl mx-auto flex items-center justify-between px-6 h-14">
-          <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors">
+        <div className="max-w-2xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
+          <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
             <span>Menu</span>
           </button>
-          <h1 className="text-base font-semibold" style={{ fontFamily: "'Georgia', serif" }}>Your Order</h1>
-          <span className="text-sm text-[#8B7355]">{cartCount} items</span>
+          <h1 className="text-sm sm:text-base font-semibold min-w-0 truncate" style={{ fontFamily: "'Georgia', serif" }}>Your Order</h1>
+          <span className="text-sm text-[#8B7355] shrink-0">{cartCount} items</span>
         </div>
       </nav>
 
-      <div className="max-w-2xl mx-auto px-6 py-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {cart.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-lg text-[#8B7355] mb-6">Your order is empty</p>

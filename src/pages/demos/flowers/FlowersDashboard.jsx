@@ -41,20 +41,20 @@ export default function FlowersDashboard() {
 
   return (
     <div
-      className="min-h-screen"
+      className="demo-page min-h-screen overflow-x-hidden"
       style={{ backgroundColor: CREAM, color: FOREST, fontFamily: "'Jost', sans-serif" }}
     >
       <nav
         className="sticky top-0 z-40 backdrop-blur-md border-b"
         style={{ backgroundColor: `${CREAM}e6`, borderColor: BLUSH }}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
-          <Link to="/demos/flowers" className="flex items-center gap-2 text-sm transition-colors" style={{ color: SAGE }}>
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
+          <Link to="/demos/flowers" className="flex items-center gap-2 text-sm transition-colors shrink-0" style={{ color: SAGE }}>
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{floristInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{floristInfo.name}</span>
           </Link>
           <h1
-            className="text-base tracking-wide"
+            className="text-sm sm:text-base tracking-wide min-w-0 truncate"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
           >
             Florist Dashboard
@@ -69,7 +69,7 @@ export default function FlowersDashboard() {
       </nav>
 
       <div className="border-b" style={{ borderColor: BLUSH, backgroundColor: `${CREAM}e6` }}>
-        <div className="max-w-7xl mx-auto flex px-6">
+        <div className="max-w-7xl mx-auto flex px-4 sm:px-6">
           {[
             { id: 'orders', label: 'Order Queue', icon: Package },
             { id: 'analytics', label: 'Seasonal Analytics', icon: BarChart3 },
@@ -91,7 +91,7 @@ export default function FlowersDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {activeTab === 'orders' ? (
           <>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">

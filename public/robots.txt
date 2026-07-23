@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /error/
+Disallow: /mvp/tshirt/login
+Disallow: /mvp/tshirt/signup
+Disallow: /mvp/tshirt/cart
+
+Sitemap: https://precisionstudios.tech/sitemap.xml

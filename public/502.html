@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>502 - Bad gateway | Precision Studios</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #161616;
+      --ink-muted: #525252;
+      --canvas: #ffffff;
+      --primary: #0f62fe;
+      --hairline: #e0e0e0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #f4f4f4;
+        --ink-muted: #c6c6c6;
+        --canvas: #161616;
+        --hairline: #393939;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--canvas);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      letter-spacing: 0.16px;
+    }
+    header {
+      border-bottom: 1px solid var(--hairline);
+      padding: 0 1.5rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header a {
+      color: var(--ink-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    header a:hover { color: var(--ink); }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+    .card {
+      max-width: 32rem;
+      text-align: center;
+    }
+    .code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.875rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .headline {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .description {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    @media (min-width: 480px) {
+      .actions { flex-direction: row; justify-content: center; }
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      text-decoration: none;
+      min-height: 2.75rem;
+      min-width: 10rem;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .btn-secondary {
+      background: var(--ink);
+      color: var(--canvas);
+    }
+    footer {
+      border-top: 1px solid var(--hairline);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/">Precision Studios</a>
+    <a href="/">Back to Home</a>
+  </header>
+  <main>
+    <div class="card">
+      <p class="code">502</p>
+      <h1>Bad gateway</h1>
+      <p class="headline">We received an invalid response from an upstream server.</p>
+      <p class="description">This is usually temporary. Wait a moment and refresh the page, or return home while we restore the connection.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/">Back to Home</a>
+        <a class="btn btn-secondary" href="/demos">View Live Demos</a>
+      </div>
+    </div>
+  </main>
+  <footer>Precision Studios</footer>
+</body>
+</html>

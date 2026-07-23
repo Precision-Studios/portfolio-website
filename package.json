@@ -3,8 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "browserslist": [
+    "defaults",
+    "not dead"
+  ],
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-error-pages.mjs && node scripts/generate-sitemap.mjs",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

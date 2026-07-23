@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -11,6 +12,26 @@ export default {
         'plex-mono': ['"IBM Plex Mono"', '"Courier New"', 'monospace'],
       },
       colors: {
+        ink: {
+          DEFAULT: 'var(--ps-ink)',
+          muted: 'var(--ps-ink-muted)',
+          subtle: 'var(--ps-ink-subtle)',
+        },
+        canvas: 'var(--ps-canvas)',
+        'surface-1': 'var(--ps-surface-1)',
+        'surface-2': 'var(--ps-surface-2)',
+        hairline: 'var(--ps-hairline)',
+        primary: {
+          DEFAULT: '#0f62fe',
+          hover: '#0050e6',
+          pressed: '#002d9c',
+        },
+        'inverse-canvas': 'var(--ps-inverse-canvas)',
+        'inverse-ink': {
+          DEFAULT: 'var(--ps-inverse-ink)',
+          muted: 'var(--ps-inverse-ink-muted)',
+        },
+        'footer-border': 'var(--ps-footer-border)',
         carbon: {
           'gray-100': '#161616',
           'gray-90': '#262626',
@@ -39,6 +60,19 @@ export default {
           'purple-60': '#8A3FFC',
         },
       },
+      fontSize: {
+        'display-xl': ['4.75rem', { lineHeight: '1.17', letterSpacing: '-0.5px', fontWeight: '300' }],
+        'display-lg': ['3.75rem', { lineHeight: '1.17', letterSpacing: '-0.4px', fontWeight: '300' }],
+        'display-md': ['2.625rem', { lineHeight: '1.2', letterSpacing: '0', fontWeight: '300' }],
+        'headline': ['2rem', { lineHeight: '1.25', letterSpacing: '0', fontWeight: '400' }],
+        'card-title': ['1.5rem', { lineHeight: '1.33', letterSpacing: '0', fontWeight: '400' }],
+        'subhead': ['1.25rem', { lineHeight: '1.4', letterSpacing: '0', fontWeight: '400' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.5', letterSpacing: '0.16px', fontWeight: '400' }],
+        'body': ['1rem', { lineHeight: '1.5', letterSpacing: '0.16px', fontWeight: '400' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.29', letterSpacing: '0.16px', fontWeight: '400' }],
+        'caption': ['0.75rem', { lineHeight: '1.33', letterSpacing: '0.32px', fontWeight: '400' }],
+        'eyebrow': ['0.875rem', { lineHeight: '1.29', letterSpacing: '0.16px', fontWeight: '400' }],
+      },
       spacing: {
         'carbon-01': '0.125rem',
         'carbon-02': '0.25rem',
@@ -53,6 +87,16 @@ export default {
         'carbon-11': '5rem',
         'carbon-12': '6rem',
         'carbon-13': '10rem',
+        'section': '6rem',
+      },
+      transitionTimingFunction: {
+        productive: 'cubic-bezier(0.2, 0, 0.38, 0.9)',
+        expressive: 'cubic-bezier(0.4, 0.14, 0.3, 1)',
+      },
+      transitionDuration: {
+        fast: '110ms',
+        moderate: '150ms',
+        slow: '240ms',
       },
     },
   },

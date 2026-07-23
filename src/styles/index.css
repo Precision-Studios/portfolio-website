@@ -5,7 +5,53 @@
 @tailwind utilities;
 
 :root {
-  /* IBM Carbon Design Tokens */
+  --ps-primary: #0f62fe;
+  --ps-primary-hover: #0050e6;
+  --ps-primary-pressed: #002d9c;
+  --ps-white: #ffffff;
+
+  --ps-blue-80: #002D9C;
+  --ps-blue-70: #0043CE;
+  --ps-blue-60: #0F62FE;
+  --ps-blue-50: #4589FF;
+  --ps-blue-40: #78A9FF;
+
+  --ps-red-60: #DA1E28;
+  --ps-yellow-30: #F1C21B;
+  --ps-green-50: #24A148;
+
+  --ps-ease-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --ps-ease-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
+  --ps-duration-fast: 110ms;
+  --ps-duration-moderate: 150ms;
+  --ps-duration-slow: 240ms;
+
+  --apple-font: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Portfolio marketing theme — light (default) */
+html.portfolio-theme {
+  --ps-ink: #161616;
+  --ps-ink-muted: #525252;
+  --ps-ink-subtle: #8c8c8c;
+  --ps-canvas: #ffffff;
+  --ps-surface-1: #f4f4f4;
+  --ps-surface-2: #e0e0e0;
+  --ps-hairline: #e0e0e0;
+  --ps-hairline-strong: #161616;
+  --ps-inverse-canvas: #161616;
+  --ps-inverse-ink: #ffffff;
+  --ps-inverse-ink-muted: #c6c6c6;
+  --ps-footer-border: #393939;
+  --ps-btn-secondary-bg: #161616;
+  --ps-btn-secondary-fg: #ffffff;
+  --ps-btn-secondary-hover: #393939;
+  --ps-scrollbar-thumb: #c6c6c6;
+  --ps-scrollbar-thumb-hover: #8d8d8d;
+  --ps-ghost-hover: rgba(15, 98, 254, 0.08);
+  --ps-hero-wash: rgba(15, 98, 254, 0.03);
+  --ps-selection: rgba(15, 98, 254, 0.2);
+
   --ps-gray-100: #161616;
   --ps-gray-90: #262626;
   --ps-gray-80: #393939;
@@ -16,30 +62,58 @@
   --ps-gray-30: #C6C6C6;
   --ps-gray-20: #E0E0E0;
   --ps-gray-10: #F4F4F4;
-  --ps-white: #FFFFFF;
 
-  --ps-blue-80: #002D9C;
-  --ps-blue-70: #0043CE;
-  --ps-blue-60: #0F62FE;
-  --ps-blue-50: #4589FF;
-  --ps-blue-40: #78A9FF;
+  background-color: var(--ps-canvas);
+  color: var(--ps-ink);
+}
 
-  --ps-teal-60: #007D79;
-  --ps-teal-50: #009D9A;
-  --ps-teal-40: #08BDBA;
+html.portfolio-theme body {
+  background-color: var(--ps-canvas);
+  color: var(--ps-ink);
+}
 
-  --ps-red-60: #DA1E28;
-  --ps-yellow-30: #F1C21B;
-  --ps-green-50: #24A148;
+/* Portfolio marketing theme — dark */
+html.portfolio-theme.dark {
+  --ps-ink: #f4f4f4;
+  --ps-ink-muted: #c6c6c6;
+  --ps-ink-subtle: #8d8d8d;
+  --ps-canvas: #161616;
+  --ps-surface-1: #262626;
+  --ps-surface-2: #393939;
+  --ps-hairline: #393939;
+  --ps-hairline-strong: #f4f4f4;
+  --ps-inverse-canvas: #0a0a0a;
+  --ps-inverse-ink: #f4f4f4;
+  --ps-inverse-ink-muted: #a8a8a8;
+  --ps-footer-border: #393939;
+  --ps-btn-secondary-bg: #f4f4f4;
+  --ps-btn-secondary-fg: #161616;
+  --ps-btn-secondary-hover: #e0e0e0;
+  --ps-scrollbar-thumb: #525252;
+  --ps-scrollbar-thumb-hover: #6f6f6f;
+  --ps-ghost-hover: rgba(120, 169, 255, 0.12);
+  --ps-hero-wash: rgba(15, 98, 254, 0.08);
+  --ps-selection: rgba(69, 137, 255, 0.25);
 
-  /* Motion */
-  --ps-ease-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
-  --ps-ease-expressive: cubic-bezier(0.4, 0.14, 0.3, 1);
-  --ps-duration-fast: 110ms;
-  --ps-duration-moderate: 150ms;
-  --ps-duration-slow: 240ms;
+  background-color: var(--ps-canvas);
+  color: var(--ps-ink);
+}
 
-  --apple-font: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+html.portfolio-theme.dark body {
+  background-color: var(--ps-canvas);
+  color: var(--ps-ink);
+}
+
+html.portfolio-dark-pending.dark,
+html.portfolio-dark-pending.dark body {
+  background-color: #161616;
+  color: #f4f4f4;
+}
+
+html.portfolio-dark-pending:not(.dark),
+html.portfolio-dark-pending:not(.dark) body {
+  background-color: #ffffff;
+  color: #161616;
 }
 
 html {
@@ -48,59 +122,63 @@ html {
 
 body {
   font-family: var(--apple-font);
-  @apply bg-black text-white antialiased;
-  letter-spacing: -0.01em;
+  background-color: #ffffff;
+  color: #161616;
+  letter-spacing: 0.16px;
+  @apply antialiased;
 }
 
-/* Glassmorphism helpers */
-.glass {
-  @apply bg-white/10 backdrop-blur-xl border border-white/10;
+.portfolio-hero-wash {
+  background-color: var(--ps-hero-wash);
 }
 
 /* IBM Carbon Button Styles */
 .carbon-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0 4rem 0 1rem;
+  padding: 0.75rem 1rem;
   height: 3rem;
   font-size: 0.875rem;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.16px;
   border: none;
+  border-radius: 0;
   cursor: pointer;
-  transition: background-color var(--ps-duration-fast) var(--ps-ease-productive);
+  transition: background-color var(--ps-duration-fast) var(--ps-ease-productive),
+    color var(--ps-duration-fast) var(--ps-ease-productive);
   position: relative;
   font-family: inherit;
+  text-decoration: none;
 }
 
 .carbon-btn-primary {
-  background-color: var(--ps-blue-60);
+  background-color: var(--ps-primary);
   color: var(--ps-white);
 }
 .carbon-btn-primary:hover {
-  background-color: var(--ps-blue-70);
+  background-color: var(--ps-primary-hover);
 }
 .carbon-btn-primary:active {
-  background-color: var(--ps-blue-80);
+  background-color: var(--ps-primary-pressed);
 }
 
 .carbon-btn-secondary {
-  background-color: var(--ps-gray-80);
-  color: var(--ps-white);
+  background-color: var(--ps-btn-secondary-bg);
+  color: var(--ps-btn-secondary-fg);
 }
 .carbon-btn-secondary:hover {
-  background-color: var(--ps-gray-70);
+  background-color: var(--ps-btn-secondary-hover);
 }
 
 .carbon-btn-ghost {
   background-color: transparent;
-  color: var(--ps-blue-60);
-  padding: 0 1rem;
+  color: var(--ps-primary);
+  padding: 0.75rem 1rem;
 }
 .carbon-btn-ghost:hover {
-  background-color: rgba(15, 98, 254, 0.08);
+  background-color: var(--ps-ghost-hover);
 }
 
 .carbon-btn-danger {
@@ -113,14 +191,40 @@ body {
 
 /* Carbon Card */
 .carbon-card {
-  background-color: var(--ps-gray-90);
+  background-color: var(--ps-canvas);
+  border: 1px solid var(--ps-hairline);
   padding: 1.5rem;
   transition: background-color var(--ps-duration-fast) var(--ps-ease-productive);
-  border-left: 3px solid transparent;
 }
 .carbon-card:hover {
-  background-color: var(--ps-gray-80);
-  border-left-color: var(--ps-blue-60);
+  background-color: var(--ps-surface-1);
+}
+
+/* Carbon Input */
+.carbon-input {
+  width: 100%;
+  background-color: var(--ps-surface-1);
+  color: var(--ps-ink);
+  border: none;
+  border-bottom: 1px solid var(--ps-hairline);
+  padding: 0.6875rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  letter-spacing: 0.16px;
+  border-radius: 0;
+  outline: none;
+  transition: border-color var(--ps-duration-fast) var(--ps-ease-productive);
+}
+.carbon-input::placeholder {
+  color: var(--ps-ink-subtle);
+}
+.carbon-input:focus {
+  border-bottom: 2px solid var(--ps-primary);
+  padding-bottom: calc(0.6875rem - 1px);
+}
+.carbon-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* Custom Scrollbar - Carbon Style */
@@ -133,16 +237,36 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--ps-scrollbar-thumb, #c6c6c6);
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--ps-scrollbar-thumb-hover, #8d8d8d);
+}
+
+html.portfolio-theme ::selection {
+  background-color: var(--ps-selection);
 }
 
 /* Smooth motion for links */
 a,
 button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--ps-duration-moderate) var(--ps-ease-productive),
+    background-color var(--ps-duration-moderate) var(--ps-ease-productive),
+    border-color var(--ps-duration-moderate) var(--ps-ease-productive);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

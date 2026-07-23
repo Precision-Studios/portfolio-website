@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png?v=20260723" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260723" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20260723" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260723" />
+  <meta name="apple-mobile-web-app-title" content="Precision" />
+  <link rel="manifest" href="/site.webmanifest?v=20260723" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Precision Studios - Enterprise-grade digital solutions for businesses. We build custom software that digitises, automates, and scales your operations." />
   <meta name="keywords" content="digital transformation, business software, web development, mobile apps, SEO, Precision Studios" />
@@ -19,6 +24,19 @@
 </head>
 
 <body>
+  <script>
+    (function () {
+      var portfolioRoutes = ['/', '/contact', '/mvp', '/demos'];
+      var path = window.location.pathname;
+      if (portfolioRoutes.indexOf(path) === -1) return;
+
+      var pref = localStorage.getItem('portfolio-theme-preference') || 'system';
+      var dark = pref === 'dark' || (pref === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var root = document.documentElement;
+      root.classList.add('portfolio-theme', 'portfolio-dark-pending');
+      if (dark) root.classList.add('dark');
+    })();
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

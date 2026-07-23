@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Shirt, Link2, ExternalLink } from 'lucide-react';
+import TopNav from '../components/marketing/TopNav';
+import SiteFooter from '../components/marketing/SiteFooter';
+import PortfolioShell from '../components/marketing/PortfolioShell';
+import { fadeUp, staggerTransition, viewportOnce } from '../lib/motion';
 
 const mvps = [
     {
@@ -9,7 +13,6 @@ const mvps = [
         description: 'A high-end e-commerce experience for custom apparel with 3D-inspired showcases.',
         path: '/mvp/tshirt',
         icon: Shirt,
-        color: 'from-indigo-500 to-purple-500',
         tags: ['React', 'Framer Motion', 'Tailwind']
     },
     {
@@ -18,7 +21,6 @@ const mvps = [
         description: 'A powerful URL shortening service built with Spring Boot, featuring QR codes and automated expiration.',
         path: 'https://www.lua.pw/',
         icon: Link2,
-        color: 'from-cyan-500 to-blue-500',
         tags: ['Spring Boot', 'PostgreSQL', 'Java 17', 'REST API'],
         isExternal: true
     }
@@ -26,74 +28,69 @@ const mvps = [
 
 export default function MvpList() {
     return (
-        <div className="min-h-screen bg-black text-white pt-32 px-6">
-            <div className="max-w-7xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="mb-20"
-                >
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-                        Our <span className="text-white/40 italic">MVPs / Projects</span>
+        <PortfolioShell>
+            <TopNav />
+
+            <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-24">
+                <motion.div {...fadeUp} className="mb-16">
+                    <p className="text-sm text-primary mb-4">Projects</p>
+                    <h1 className="text-display-lg font-light tracking-tight mb-6 text-ink">
+                        Our <span className="text-ink-muted">MVPs & projects</span>
                     </h1>
-                    <p className="text-xl text-white/60 max-w-2xl">
+                    <p className="text-body-lg text-ink-muted max-w-2xl">
                         A collection of high-performance, precision-engineered craft.
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline border border-hairline">
                     {mvps.map((mvp, index) => {
                         const CardContent = (
-                            <div className="relative p-6 rounded-3xl bg-neutral-900 border border-white/5 overflow-hidden transition-all duration-500 hover:border-white/20 hover:bg-neutral-800 h-full flex flex-col">
-                                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${mvp.color} opacity-10 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:opacity-20 transition-opacity`} />
-
-                                <div className="relative z-10 flex-grow">
-                                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${mvp.color} mb-8 shadow-lg`}>
-                                        <mvp.icon className="w-8 h-8 text-white" />
-                                    </div>
-
-                                    <h2 className="text-3xl font-bold mb-2 flex items-center gap-2">
-                                        {mvp.title}
-                                        {mvp.isExternal ? (
-                                            <ExternalLink className="w-5 h-5 opacity-40" />
-                                        ) : (
-                                            <ArrowRight className="w-6 h-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                                        )}
-                                    </h2>
-
-                                    <p className="text-lg text-white/50 leading-relaxed mb-5 max-w-md">
-                                        {mvp.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-2 mb-5">
-                                        {mvp.tags.map(tag => (
-                                            <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/40">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                            <div className="p-8 bg-canvas hover:bg-surface-1 transition-colors h-full flex flex-col group">
+                                <div className="w-10 h-10 flex items-center justify-center bg-primary/8 text-primary mb-6">
+                                    <mvp.icon className="w-5 h-5" />
                                 </div>
 
-                                <div className="relative z-10 flex items-center gap-2 text-sm font-semibold tracking-wider uppercase text-white/40 group-hover:text-white transition-colors mt-auto">
-                                    {mvp.isExternal ? 'Visit Website' : 'View Project'}
+                                <h2 className="text-card-title font-normal tracking-tight mb-2 flex items-center gap-2 text-ink">
+                                    {mvp.title}
+                                    {mvp.isExternal ? (
+                                        <ExternalLink className="w-4 h-4 text-ink-subtle" />
+                                    ) : (
+                                        <ArrowRight className="w-4 h-4 text-ink-subtle opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                                    )}
+                                </h2>
+
+                                <p className="text-body-sm text-ink-muted leading-relaxed mb-5 flex-grow">
+                                    {mvp.description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                    {mvp.tags.map(tag => (
+                                        <span key={tag} className="text-caption px-2 py-0.5 bg-surface-1 text-ink-muted font-medium">
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
+
+                                <span className="text-sm font-medium text-ink-muted group-hover:text-primary transition-colors">
+                                    {mvp.isExternal ? 'Visit website' : 'View project'}
+                                </span>
                             </div>
                         );
 
                         return (
                             <motion.div
                                 key={mvp.id}
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                initial={{ opacity: 0, y: 12 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={viewportOnce}
+                                {...staggerTransition(index)}
                             >
                                 {mvp.isExternal ? (
-                                    <a href={mvp.path} target="_blank" rel="noopener noreferrer" className="group block h-full">
+                                    <a href={mvp.path} target="_blank" rel="noopener noreferrer" className="block h-full">
                                         {CardContent}
                                     </a>
                                 ) : (
-                                    <Link to={mvp.path} className="group block h-full">
+                                    <Link to={mvp.path} className="block h-full">
                                         {CardContent}
                                     </Link>
                                 )}
@@ -102,6 +99,8 @@ export default function MvpList() {
                     })}
                 </div>
             </div>
-        </div>
+
+            <SiteFooter />
+        </PortfolioShell>
     );
 }

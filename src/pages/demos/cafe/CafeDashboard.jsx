@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Clock, CheckCircle, TrendingUp, DollarSign, ShoppingBag, ChefHat } from 'lucide-react';
+import { ArrowLeft, TrendingUp, DollarSign, ShoppingBag, ChefHat, EggFried, BarChart3 } from 'lucide-react';
 import { mockOrders, dailyStats, cafeInfo } from '../../../data/cafeData';
 
 const statusConfig = {
@@ -41,18 +41,19 @@ export default function CafeDashboard() {
       <div className="border-b border-[#E0D5C5] bg-[#F5F0E8]/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex px-6">
           {[
-            { id: 'orders', label: '🍳 Order Queue' },
-            { id: 'analytics', label: '📊 Analytics' },
+            { id: 'orders', label: 'Order Queue', icon: <EggFried className="w-4 h-4" /> },
+            { id: 'analytics', label: 'Analytics', icon: <BarChart3 className="w-4 h-4" /> },
           ].map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-3 text-sm transition-all border-b-2 ${
+              className={`flex items-center gap-2 px-5 py-3 text-sm transition-all border-b-2 ${
                 activeTab === tab.id
                   ? 'border-[#C17832] text-[#2C1810] font-medium'
                   : 'border-transparent text-[#8B7355] hover:text-[#2C1810]'
               }`}
             >
+              {tab.icon}
               {tab.label}
             </button>
           ))}

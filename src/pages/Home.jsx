@@ -70,10 +70,10 @@ const solutions = [
 const industries = [
   { icon: Stethoscope, name: 'Medical & Clinics', desc: 'Online booking, patient portals, appointment management', link: '/demos/medical' },
   { icon: Coffee, name: 'Cafés & Restaurants', desc: 'Digital menus, QR ordering, kitchen dashboards', link: '/demos/cafe' },
-  { icon: GraduationCap, name: 'Tutors & Educators', desc: 'Student CRM, scheduling, fee tracking', link: '/demos' },
-  { icon: PawPrint, name: 'Pet Centres & Vets', desc: 'Pet profiles, grooming bookings, health records', link: '/demos' },
-  { icon: Flower2, name: 'Florists & Retail', desc: 'Product listings, online orders, delivery', link: '/demos' },
-  { icon: BarChart3, name: 'Marketing Agencies', desc: 'SEO dashboards, analytics, client reporting', link: '/demos' },
+  { icon: GraduationCap, name: 'Tutors & Educators', desc: 'Student CRM, scheduling, fee tracking', link: '/demos/education' },
+  { icon: PawPrint, name: 'Pet Centres & Vets', desc: 'Pet profiles, grooming bookings, health records', link: '/demos/pets' },
+  { icon: Flower2, name: 'Florists & Retail', desc: 'Product listings, online orders, delivery', link: '/demos/flowers' },
+  { icon: BarChart3, name: 'Marketing Agencies', desc: 'SEO dashboards, analytics, client reporting', link: '/demos/marketing' },
 ];
 
 const metrics = [
@@ -93,6 +93,10 @@ function IconBox({ icon: Icon }) {
   );
 }
 
+function SloganHighlight({ children }) {
+  return <span className="hero-slogan-mark">{children}</span>;
+}
+
 export default function Home() {
   return (
     <PortfolioShell>
@@ -101,27 +105,28 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-hairline">
-        <div className="absolute inset-0 z-0 pointer-events-none portfolio-hero-wash" />
+        <div className="absolute inset-0 z-0 pointer-events-none portfolio-hero-mesh" />
+        <div className="absolute inset-0 z-0 pointer-events-none portfolio-hero-grid" />
 
         <div className="relative z-10 max-w-[1584px] mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 min-h-[85vh] items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 min-h-[72vh] items-center py-12 lg:py-16">
             <motion.div
               {...fadeUp}
               {...heroTransition}
-              className="pt-16 lg:pt-0 lg:pr-16"
+              className="lg:pr-8"
             >
-              <p className="text-sm text-primary mb-6 flex items-center gap-2">
+              <p className="text-sm text-primary mb-4 flex items-center gap-2">
                 <span className="w-8 h-px bg-primary" />
                 Digital solutions for Australian businesses
               </p>
 
-              <h1 className="text-[clamp(2.5rem,5vw,3.75rem)] font-light tracking-tight leading-[1.05] mb-8 text-ink">
-                Digitise your business.<br />
-                Automate your operations.<br />
-                <span className="text-ink-muted">Scale with confidence.</span>
+              <h1 className="hero-slogan text-[clamp(2rem,4.2vw,3rem)] font-light tracking-tight mb-6 text-ink">
+                <span className="hero-slogan-line">Digitise your <SloganHighlight>business</SloganHighlight>.</span>
+                <span className="hero-slogan-line">More <SloganHighlight>customers</SloganHighlight> & visibility.</span>
+                <span className="hero-slogan-line">More <SloganHighlight>time</SloganHighlight> for you.</span>
               </h1>
 
-              <p className="text-body-lg text-ink-muted font-light leading-relaxed mb-10 max-w-xl">
+              <p className="text-body-lg text-ink-muted font-light leading-relaxed mb-8 max-w-xl">
                 We build enterprise-grade software for local Australian businesses - from medical clinics in Sydney to cafés in Melbourne. Custom-engineered platforms that bring in customers and cut operational costs.
               </p>
 
@@ -142,7 +147,7 @@ export default function Home() {
               {...heroTransition}
               className="hidden lg:block"
             >
-              <div className="grid grid-cols-2 gap-px bg-hairline border border-hairline">
+              <div className="hero-industry-grid grid grid-cols-2 gap-px bg-hairline border border-hairline">
                 {industries.slice(0, 4).map((ind, i) => (
                   <Link
                     key={i}

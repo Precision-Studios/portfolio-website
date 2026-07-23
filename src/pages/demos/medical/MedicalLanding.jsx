@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Shield, Clock, Users, Activity, CalendarCheck, Stethoscope, Star, ChevronRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Shield, Clock, Users, Activity, CalendarCheck, Stethoscope, Star, ChevronRight, Microscope, Baby, Heart, ClipboardList } from 'lucide-react';
 import { clinicInfo, doctors } from '../../../data/medicalData';
 
 const features = [
@@ -28,6 +28,15 @@ const features = [
     description: "Built with privacy legislation in mind. Data encryption and access controls from day one.",
     color: "bg-emerald-50 text-emerald-600",
   },
+];
+
+const specializations = [
+  { icon: <Stethoscope className="w-6 h-6" />, name: "General Practice", color: "bg-teal-50 text-teal-600" },
+  { icon: <Stethoscope className="w-6 h-6" />, name: "Dentistry", color: "bg-blue-50 text-blue-600" },
+  { icon: <Microscope className="w-6 h-6" />, name: "Dermatology", color: "bg-purple-50 text-purple-600" },
+  { icon: <Baby className="w-6 h-6" />, name: "Paediatrics", color: "bg-pink-50 text-pink-600" },
+  { icon: <Heart className="w-6 h-6" />, name: "Cardiology", color: "bg-red-50 text-red-600" },
+  { icon: <ClipboardList className="w-6 h-6" />, name: "Health Checks", color: "bg-emerald-50 text-emerald-600" },
 ];
 
 export default function MedicalLanding() {
@@ -198,14 +207,7 @@ export default function MedicalLanding() {
         <div className="max-w-6xl mx-auto">
           <p className="text-sm text-teal-600 font-medium tracking-wider uppercase mb-8 text-center">Available Specialisations</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {[
-              { icon: "🩺", name: "General Practice" },
-              { icon: "🦷", name: "Dentistry" },
-              { icon: "🔬", name: "Dermatology" },
-              { icon: "👶", name: "Paediatrics" },
-              { icon: "❤️", name: "Cardiology" },
-              { icon: "📋", name: "Health Checks" },
-            ].map((svc, i) => (
+            {specializations.map((svc, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -214,7 +216,9 @@ export default function MedicalLanding() {
                 transition={{ delay: i * 0.04 }}
                 className="text-center p-5 bg-[#F8FAFB] rounded-xl hover:bg-teal-50 transition-colors cursor-default"
               >
-                <span className="text-3xl mb-2 block">{svc.icon}</span>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 ${svc.color}`}>
+                  {svc.icon}
+                </div>
                 <p className="text-xs font-medium text-gray-600">{svc.name}</p>
               </motion.div>
             ))}

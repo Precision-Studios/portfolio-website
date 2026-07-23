@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, CheckCircle, Calendar, Clock, User, FileText } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CheckCircle, Calendar, Clock, User, FileText } from 'lucide-react';
 import { doctors, timeSlots, clinicInfo } from '../../../data/medicalData';
 
 const steps = ['Doctor', 'Date & Time', 'Your Details', 'Confirm'];
@@ -120,7 +120,7 @@ export default function MedicalBooking() {
               <span className={`w-6 h-6 flex items-center justify-center text-[11px] rounded-lg font-medium ${
                 i < currentStep ? 'bg-teal-100 text-teal-600' : i === currentStep ? 'bg-teal-600 text-white' : 'bg-gray-100 text-gray-400'
               }`}>
-                {i < currentStep ? '✓' : i + 1}
+                {i < currentStep ? <Check className="w-3.5 h-3.5" /> : i + 1}
               </span>
               <span className="hidden sm:inline">{step}</span>
             </div>

@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ShoppingBag, Plus, Minus, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, Plus, Minus, ArrowRight, Coffee, Croissant, EggFried, Star } from 'lucide-react';
 import { menuItems, menuCategories, cafeInfo } from '../../../data/cafeData';
+
+const categoryIcons = {
+  Coffee,
+  Croissant,
+  EggFried,
+  Star,
+};
 
 export default function CafeMenu() {
   const [activeCategory, setActiveCategory] = useState('coffee');
@@ -74,20 +81,23 @@ export default function CafeMenu() {
       {/* ─── CATEGORIES ─── */}
       <div className="sticky top-14 z-30 bg-[#FBF7F0]/90 backdrop-blur-md border-b border-[#E8DFD3]">
         <div className="max-w-3xl mx-auto flex overflow-x-auto px-4">
-          {menuCategories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-5 py-3 text-sm whitespace-nowrap transition-all border-b-2 ${
-                activeCategory === cat.id
-                  ? 'border-[#C17832] text-[#2C1810] font-medium'
-                  : 'border-transparent text-[#8B7355] hover:text-[#2C1810]'
-              }`}
-            >
-              <span>{cat.icon}</span>
-              <span>{cat.label}</span>
-            </button>
-          ))}
+          {menuCategories.map(cat => {
+            const Icon = categoryIcons[cat.icon];
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`flex items-center gap-2 px-5 py-3 text-sm whitespace-nowrap transition-all border-b-2 ${
+                  activeCategory === cat.id
+                    ? 'border-[#C17832] text-[#2C1810] font-medium'
+                    : 'border-transparent text-[#8B7355] hover:text-[#2C1810]'
+                }`}
+              >
+                {Icon && <Icon className="w-4 h-4" />}
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 

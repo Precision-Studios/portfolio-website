@@ -49,7 +49,14 @@ html.portfolio-theme {
   --ps-scrollbar-thumb: #c6c6c6;
   --ps-scrollbar-thumb-hover: #8d8d8d;
   --ps-ghost-hover: rgba(15, 98, 254, 0.08);
-  --ps-hero-wash: rgba(15, 98, 254, 0.03);
+  --ps-hero-wash: rgba(15, 98, 254, 0.06);
+  --ps-hero-mesh-1: rgba(15, 98, 254, 0.26);
+  --ps-hero-mesh-2: rgba(120, 169, 255, 0.3);
+  --ps-hero-mesh-3: rgba(69, 137, 255, 0.2);
+  --ps-hero-mesh-4: rgba(15, 98, 254, 0.18);
+  --ps-hero-gradient: linear-gradient(128deg, rgba(15, 98, 254, 0.1) 0%, rgba(255, 255, 255, 0) 42%, rgba(120, 169, 255, 0.12) 100%);
+  --ps-shadow-stacked-1: rgba(22, 22, 22, 0.04);
+  --ps-shadow-stacked-2: rgba(22, 22, 22, 0.06);
   --ps-selection: rgba(15, 98, 254, 0.2);
 
   --ps-gray-100: #161616;
@@ -92,7 +99,14 @@ html.portfolio-theme.dark {
   --ps-scrollbar-thumb: #525252;
   --ps-scrollbar-thumb-hover: #6f6f6f;
   --ps-ghost-hover: rgba(120, 169, 255, 0.12);
-  --ps-hero-wash: rgba(15, 98, 254, 0.08);
+  --ps-hero-wash: rgba(15, 98, 254, 0.12);
+  --ps-hero-mesh-1: rgba(15, 98, 254, 0.34);
+  --ps-hero-mesh-2: rgba(69, 137, 255, 0.26);
+  --ps-hero-mesh-3: rgba(120, 169, 255, 0.2);
+  --ps-hero-mesh-4: rgba(0, 45, 156, 0.3);
+  --ps-hero-gradient: linear-gradient(128deg, rgba(15, 98, 254, 0.16) 0%, rgba(22, 22, 22, 0) 45%, rgba(69, 137, 255, 0.14) 100%);
+  --ps-shadow-stacked-1: rgba(0, 0, 0, 0.22);
+  --ps-shadow-stacked-2: rgba(0, 0, 0, 0.16);
   --ps-selection: rgba(69, 137, 255, 0.25);
 
   background-color: var(--ps-canvas);
@@ -126,6 +140,53 @@ body {
   color: #161616;
   letter-spacing: 0.16px;
   @apply antialiased;
+}
+
+.hero-slogan {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-slogan-line {
+  display: block;
+  line-height: 1.15;
+}
+
+.hero-slogan-mark {
+  display: inline-block;
+  line-height: 1;
+  padding: 0.12em 0.3em;
+  background-color: var(--ps-inverse-canvas);
+  color: var(--ps-inverse-ink);
+  vertical-align: baseline;
+}
+
+.portfolio-hero-mesh {
+  background-color: var(--ps-canvas);
+  background-image:
+    var(--ps-hero-gradient),
+    radial-gradient(ellipse 85% 65% at 8% 12%, var(--ps-hero-mesh-1), transparent 62%),
+    radial-gradient(ellipse 75% 60% at 92% 8%, var(--ps-hero-mesh-2), transparent 58%),
+    radial-gradient(ellipse 70% 55% at 75% 95%, var(--ps-hero-mesh-3), transparent 52%),
+    radial-gradient(ellipse 65% 50% at 15% 88%, var(--ps-hero-mesh-4), transparent 48%);
+}
+
+.portfolio-hero-grid {
+  background-image:
+    linear-gradient(var(--ps-hairline) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ps-hairline) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.52;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, black 20%, transparent 75%);
+}
+
+.hero-industry-grid {
+  box-shadow:
+    0 1px 2px var(--ps-shadow-stacked-1),
+    0 4px 8px var(--ps-shadow-stacked-1),
+    0 12px 24px var(--ps-shadow-stacked-2),
+    0 24px 48px var(--ps-shadow-stacked-1);
 }
 
 .portfolio-hero-wash {

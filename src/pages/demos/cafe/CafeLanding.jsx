@@ -1,28 +1,32 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Wifi, Clock, ChefHat, TrendingUp, Star } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Wifi, Clock, ChefHat, TrendingUp, Star, Coffee, QrCode, ClipboardList, BarChart3, Bell } from 'lucide-react';
 import { cafeInfo } from '../../../data/cafeData';
 
 const features = [
   {
-    icon: "📱",
+    icon: <QrCode className="w-6 h-6" />,
     title: "Scan & Order",
     description: "Customers scan a QR code at their table and order instantly from their phone.",
+    color: "bg-amber-50 text-amber-700",
   },
   {
-    icon: "🍽️",
+    icon: <ClipboardList className="w-6 h-6" />,
     title: "Live Menu Updates",
     description: "Change prices, add specials, or mark items sold out - all in real time.",
+    color: "bg-orange-50 text-orange-700",
   },
   {
-    icon: "📊",
+    icon: <BarChart3 className="w-6 h-6" />,
     title: "Sales Insights",
     description: "See your best sellers, peak hours, and daily revenue at a glance.",
+    color: "bg-[#EDE4D8] text-[#8B5A2B]",
   },
   {
-    icon: "🔔",
+    icon: <Bell className="w-6 h-6" />,
     title: "Kitchen Alerts",
     description: "Orders appear on your kitchen screen the moment they're placed. No lost tickets.",
+    color: "bg-rose-50 text-rose-700",
   },
 ];
 
@@ -38,7 +42,9 @@ export default function CafeLanding() {
             <span>All Demos</span>
           </Link>
           <div className="flex items-center gap-3">
-            <span className="text-2xl">☕</span>
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C17832] to-[#A05A20] flex items-center justify-center shadow-sm">
+              <Coffee className="w-5 h-5 text-white" />
+            </div>
             <span className="text-base font-semibold tracking-tight">{cafeInfo.name}</span>
           </div>
           <div className="flex items-center gap-2 text-xs text-[#8B7355]">
@@ -143,7 +149,9 @@ export default function CafeLanding() {
                 transition={{ delay: i * 0.1 }}
                 className="group bg-white rounded-2xl p-8 border border-[#E8DFD3] hover:border-[#D7A86E] hover:shadow-lg hover:shadow-[#D7A86E]/5 transition-all"
               >
-                <span className="text-4xl mb-5 block">{feature.icon}</span>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${feature.color} mb-5`}>
+                  {feature.icon}
+                </div>
                 <h3 className="text-xl font-semibold mb-2 tracking-tight">{feature.title}</h3>
                 <p className="text-sm text-[#8B7355] leading-relaxed">{feature.description}</p>
               </motion.div>

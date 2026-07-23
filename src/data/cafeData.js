@@ -3,14 +3,14 @@ export const cafeInfo = {
   tagline: "Crafted with care, served with love",
   address: "42 Baker Street, London, W1U 7AJ",
   phone: "+44 20 7946 0958",
-  hours: "Mon–Fri 7:00–19:00 · Sat–Sun 8:00–18:00",
+  hours: "Mon-Fri 7:00-19:00 · Sat-Sun 8:00-18:00",
 };
 
 export const menuCategories = [
-  { id: "coffee", label: "Coffee & Drinks", icon: "☕" },
-  { id: "pastries", label: "Pastries & Bakes", icon: "🥐" },
-  { id: "breakfast", label: "Breakfast", icon: "🍳" },
-  { id: "specials", label: "Today's Specials", icon: "⭐" },
+  { id: "coffee", label: "Coffee & Drinks", icon: "Coffee" },
+  { id: "pastries", label: "Pastries & Bakes", icon: "Croissant" },
+  { id: "breakfast", label: "Breakfast", icon: "EggFried" },
+  { id: "specials", label: "Today's Specials", icon: "Star" },
 ];
 
 export const menuItems = [

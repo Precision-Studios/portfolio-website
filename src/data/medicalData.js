@@ -3,7 +3,7 @@ export const clinicInfo = {
   tagline: "Your clinic, digitised",
   address: "15 Harley Street, London, W1G 9QY",
   phone: "+44 20 7946 1234",
-  hours: "Mon–Fri 8:00–20:00 · Sat 9:00–14:00",
+  hours: "Mon-Fri 8:00-20:00 · Sat 9:00-14:00",
   email: "appointments@precisionhealth.clinic",
 };
 
@@ -124,12 +124,12 @@ export const timeSlots = [
 ];
 
 export const services = [
-  { id: "consultation", name: "General Consultation", duration: "30 min", icon: "🩺" },
-  { id: "checkup", name: "Full Health Check-up", duration: "60 min", icon: "📋" },
-  { id: "dental-clean", name: "Dental Cleaning", duration: "45 min", icon: "🦷" },
-  { id: "skin-consult", name: "Skin Consultation", duration: "30 min", icon: "🔬" },
-  { id: "child-assess", name: "Child Development Assessment", duration: "45 min", icon: "👶" },
-  { id: "cardiac-screen", name: "Cardiac Screening", duration: "60 min", icon: "❤️" },
+  { id: "consultation", name: "General Consultation", duration: "30 min", icon: "Stethoscope" },
+  { id: "checkup", name: "Full Health Check-up", duration: "60 min", icon: "ClipboardList" },
+  { id: "dental-clean", name: "Dental Cleaning", duration: "45 min", icon: "Stethoscope" },
+  { id: "skin-consult", name: "Skin Consultation", duration: "30 min", icon: "Microscope" },
+  { id: "child-assess", name: "Child Development Assessment", duration: "45 min", icon: "Baby" },
+  { id: "cardiac-screen", name: "Cardiac Screening", duration: "60 min", icon: "Heart" },
 ];
 
 export const mockAppointments = [

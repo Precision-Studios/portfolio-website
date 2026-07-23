@@ -57,7 +57,7 @@ export default function CafeOrder() {
               ['Table', tableNumber, ''],
               ['Items', `${cartCount}`, ''],
               ['Total (incl. GST)', `$${total.toFixed(2)}`, 'font-semibold'],
-              ['Est. Wait', '8–12 min', 'text-green-600'],
+              ['Est. Wait', '8-12 min', 'text-green-600'],
             ].map(([label, value, cls]) => (
               <div key={label} className="flex justify-between text-sm">
                 <span className="text-[#8B7355]">{label}</span>

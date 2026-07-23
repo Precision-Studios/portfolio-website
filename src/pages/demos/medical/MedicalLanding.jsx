@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Shield, Clock, Users, Activity, CalendarCheck, Stethoscope, Star, ChevronRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Shield, Clock, Users, Activity, CalendarCheck, Stethoscope, Star, ChevronRight, Microscope, Baby, Heart, ClipboardList } from 'lucide-react';
 import { clinicInfo, doctors } from '../../../data/medicalData';
 
 const features = [
@@ -30,27 +30,36 @@ const features = [
   },
 ];
 
+const specializations = [
+  { icon: <Stethoscope className="w-6 h-6" />, name: "General Practice", color: "bg-teal-50 text-teal-600" },
+  { icon: <Stethoscope className="w-6 h-6" />, name: "Dentistry", color: "bg-blue-50 text-blue-600" },
+  { icon: <Microscope className="w-6 h-6" />, name: "Dermatology", color: "bg-purple-50 text-purple-600" },
+  { icon: <Baby className="w-6 h-6" />, name: "Paediatrics", color: "bg-pink-50 text-pink-600" },
+  { icon: <Heart className="w-6 h-6" />, name: "Cardiology", color: "bg-red-50 text-red-600" },
+  { icon: <ClipboardList className="w-6 h-6" />, name: "Health Checks", color: "bg-emerald-50 text-emerald-600" },
+];
+
 export default function MedicalLanding() {
   return (
-    <div className="min-h-screen bg-[#F8FAFB] text-[#1A1A2E]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#F8FAFB] text-[#1A1A2E] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
       {/* ─── NAV ─── */}
       <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
             <span>All Demos</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center shrink-0">
               <Stethoscope className="w-5 h-5 text-white" />
             </div>
-            <div>
-              <span className="text-sm font-semibold tracking-tight block leading-tight">{clinicInfo.name}</span>
-              <span className="text-[10px] text-gray-400">Healthcare Platform</span>
+            <div className="min-w-0">
+              <span className="text-sm sm:text-base font-semibold tracking-tight block leading-tight truncate max-w-[42vw] sm:max-w-none">{clinicInfo.name}</span>
+              <span className="text-[10px] text-gray-400 hidden sm:block">Healthcare Platform</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2 text-xs text-gray-400 shrink-0">
             <span className="hidden sm:inline">Built by</span>
             <Link to="/" className="font-semibold text-teal-600 hover:text-teal-500 transition-colors">Precision Studios</Link>
           </div>
@@ -62,7 +71,7 @@ export default function MedicalLanding() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0D3B3F] via-[#0A4A4F] to-[#063B40]" />
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 lg:py-28">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -130,6 +139,36 @@ export default function MedicalLanding() {
               <p className="text-xs text-white/30 text-center pt-2">{doctors.length} specialists available</p>
             </motion.div>
           </div>
+
+          {/* Mobile doctor preview scroll */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="block lg:hidden mt-10"
+          >
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin-x -mx-4 px-4 sm:-mx-6 sm:px-6">
+              {doctors.slice(0, 3).map((doc) => (
+                <Link
+                  key={doc.id}
+                  to="/demos/medical/doctors"
+                  className="flex-shrink-0 w-[72vw] max-w-[260px] flex items-center gap-3 p-4 bg-white/[0.07] backdrop-blur-sm rounded-xl border border-white/10"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-semibold text-white">{doc.name.split(' ').map(n => n[0]).join('').slice(0, 2)}</span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold text-white truncate">{doc.name}</p>
+                    <p className="text-xs text-white/40 truncate">{doc.title}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-yellow-400 shrink-0">
+                    <Star className="w-3 h-3 fill-yellow-400" />
+                    <span>{doc.rating}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -158,7 +197,7 @@ export default function MedicalLanding() {
       </section>
 
       {/* ─── FEATURES ─── */}
-      <section className="py-24 px-6">
+      <section className="py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -194,18 +233,11 @@ export default function MedicalLanding() {
       </section>
 
       {/* ─── SERVICES ─── */}
-      <section className="py-16 px-6 bg-white border-y border-gray-100">
+      <section className="py-16 px-4 sm:px-6 bg-white border-y border-gray-100">
         <div className="max-w-6xl mx-auto">
           <p className="text-sm text-teal-600 font-medium tracking-wider uppercase mb-8 text-center">Available Specialisations</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {[
-              { icon: "🩺", name: "General Practice" },
-              { icon: "🦷", name: "Dentistry" },
-              { icon: "🔬", name: "Dermatology" },
-              { icon: "👶", name: "Paediatrics" },
-              { icon: "❤️", name: "Cardiology" },
-              { icon: "📋", name: "Health Checks" },
-            ].map((svc, i) => (
+            {specializations.map((svc, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -214,7 +246,9 @@ export default function MedicalLanding() {
                 transition={{ delay: i * 0.04 }}
                 className="text-center p-5 bg-[#F8FAFB] rounded-xl hover:bg-teal-50 transition-colors cursor-default"
               >
-                <span className="text-3xl mb-2 block">{svc.icon}</span>
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3 ${svc.color}`}>
+                  {svc.icon}
+                </div>
                 <p className="text-xs font-medium text-gray-600">{svc.name}</p>
               </motion.div>
             ))}
@@ -223,7 +257,7 @@ export default function MedicalLanding() {
       </section>
 
       {/* ─── CTA ─── */}
-      <section className="py-20 px-6 bg-gradient-to-r from-teal-600 to-teal-700">
+      <section className="py-20 px-4 sm:px-6 bg-gradient-to-r from-teal-600 to-teal-700">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="text-2xl md:text-3xl font-semibold text-white mb-2">
@@ -244,7 +278,7 @@ export default function MedicalLanding() {
       </section>
 
       {/* ─── FOOTER ─── */}
-      <footer className="py-8 px-6 text-center text-xs tracking-wider text-gray-400 bg-white border-t border-gray-100">
+      <footer className="py-8 px-4 sm:px-6 text-center text-xs tracking-wider text-gray-400 bg-white border-t border-gray-100">
         <p>WHITELABEL DEMO · {clinicInfo.name.toUpperCase()} · BUILT BY <Link to="/" className="text-teal-600 hover:underline">PRECISION STUDIOS</Link></p>
       </footer>
     </div>

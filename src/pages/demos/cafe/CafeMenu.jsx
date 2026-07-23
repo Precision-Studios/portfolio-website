@@ -1,8 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ShoppingBag, Plus, Minus, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ShoppingBag, Plus, Minus, ArrowRight, Coffee, Croissant, EggFried, Star } from 'lucide-react';
 import { menuItems, menuCategories, cafeInfo } from '../../../data/cafeData';
+
+const categoryIcons = {
+  Coffee,
+  Croissant,
+  EggFried,
+  Star,
+};
 
 export default function CafeMenu() {
   const [activeCategory, setActiveCategory] = useState('coffee');
@@ -40,22 +47,22 @@ export default function CafeMenu() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF7F0] text-[#2C1810]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#FBF7F0] text-[#2C1810] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
       {/* ─── NAV ─── */}
       <nav className="sticky top-0 z-40 bg-[#FBF7F0]/90 backdrop-blur-md border-b border-[#E8DFD3]">
-        <div className="max-w-3xl mx-auto flex items-center justify-between px-6 h-14">
-          <Link to="/demos/cafe" className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors">
+        <div className="max-w-3xl mx-auto flex items-center justify-between px-4 sm:px-6 h-14 min-w-0 gap-2">
+          <Link to="/demos/cafe" className="flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{cafeInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{cafeInfo.name}</span>
           </Link>
 
-          <h1 className="text-base font-semibold tracking-tight" style={{ fontFamily: "'Georgia', serif" }}>Menu</h1>
+          <h1 className="text-sm sm:text-base font-semibold tracking-tight min-w-0 truncate" style={{ fontFamily: "'Georgia', serif" }}>Menu</h1>
 
           <Link
             to="/demos/cafe/order"
             state={{ cart }}
-            className="relative flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] transition-colors"
+            className="relative flex items-center gap-2 text-[#8B7355] hover:text-[#2C1810] transition-colors shrink-0"
           >
             <ShoppingBag className="w-5 h-5" />
             {cartCount > 0 && (
@@ -74,25 +81,28 @@ export default function CafeMenu() {
       {/* ─── CATEGORIES ─── */}
       <div className="sticky top-14 z-30 bg-[#FBF7F0]/90 backdrop-blur-md border-b border-[#E8DFD3]">
         <div className="max-w-3xl mx-auto flex overflow-x-auto px-4">
-          {menuCategories.map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-5 py-3 text-sm whitespace-nowrap transition-all border-b-2 ${
-                activeCategory === cat.id
-                  ? 'border-[#C17832] text-[#2C1810] font-medium'
-                  : 'border-transparent text-[#8B7355] hover:text-[#2C1810]'
-              }`}
-            >
-              <span>{cat.icon}</span>
-              <span>{cat.label}</span>
-            </button>
-          ))}
+          {menuCategories.map(cat => {
+            const Icon = categoryIcons[cat.icon];
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`flex items-center gap-2 px-5 py-3 text-sm whitespace-nowrap transition-all border-b-2 ${
+                  activeCategory === cat.id
+                    ? 'border-[#C17832] text-[#2C1810] font-medium'
+                    : 'border-transparent text-[#8B7355] hover:text-[#2C1810]'
+                }`}
+              >
+                {Icon && <Icon className="w-4 h-4" />}
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* ─── ITEMS ─── */}
-      <div className="max-w-3xl mx-auto px-6 py-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}

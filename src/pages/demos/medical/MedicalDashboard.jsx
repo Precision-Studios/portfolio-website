@@ -20,17 +20,17 @@ export default function MedicalDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFB] text-[#1A1A2E]" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div className="demo-page min-h-screen bg-[#F8FAFB] text-[#1A1A2E] overflow-x-hidden" style={{ fontFamily: "'IBM Plex Sans', sans-serif" }}>
 
       {/* Nav */}
       <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
-          <Link to="/demos/medical" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16 min-w-0 gap-2">
+          <Link to="/demos/medical" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-sm transition-colors shrink-0">
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">{clinicInfo.name}</span>
+            <span className="hidden sm:inline truncate max-w-[42vw] sm:max-w-none">{clinicInfo.name}</span>
           </Link>
-          <h1 className="text-base font-semibold tracking-tight">Clinic Dashboard</h1>
-          <div className="flex items-center gap-2">
+          <h1 className="text-sm sm:text-base font-semibold tracking-tight min-w-0 truncate">Clinic Dashboard</h1>
+          <div className="flex items-center gap-2 shrink-0">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             <span className="text-xs text-gray-400">Live</span>
           </div>
@@ -59,7 +59,7 @@ export default function MedicalDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
         {activeTab === 'appointments' ? (
           <>
             {/* Stats */}

@@ -7,7 +7,7 @@ const solutions = [
     icon: <Globe className="w-6 h-6" />,
     label: "Websites & Web Apps",
     title: "Custom websites that convert",
-    description: "Purpose-built websites and web applications designed to bring in customers and automate your operations. No templates — engineered from scratch.",
+    description: "Purpose-built websites and web applications designed to bring in customers and automate your operations. No templates - engineered from scratch.",
     link: "/demos",
   },
   {
@@ -42,7 +42,7 @@ const solutions = [
     icon: <BarChart3 className="w-6 h-6" />,
     label: "Business Digitalisation",
     title: "Digitise your entire operation",
-    description: "End-to-end digital transformation — from paper-based processes to automated, data-driven systems.",
+    description: "End-to-end digital transformation - from paper-based processes to automated, data-driven systems.",
     link: "/demos",
   },
 ];
@@ -123,7 +123,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-[1584px] mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 min-h-[85vh] items-center">
-            {/* Left — Copy */}
+            {/* Left - Copy */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ export default function Home() {
               </h1>
 
               <p className="text-base md:text-lg text-white/40 font-light leading-relaxed mb-10 max-w-xl">
-                We build enterprise-grade software for local Australian businesses — from medical clinics in Sydney to cafés in Melbourne. Custom-engineered platforms that bring in customers and cut operational costs.
+                We build enterprise-grade software for local Australian businesses - from medical clinics in Sydney to cafés in Melbourne. Custom-engineered platforms that bring in customers and cut operational costs.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -163,7 +163,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right — Featured Industries preview */}
+            {/* Right - Featured Industries preview */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -225,7 +225,7 @@ export default function Home() {
               <span className="text-white/30">Australian business.</span>
             </h2>
             <p className="text-sm text-white/35 max-w-lg">
-              From local cafés to medical practices — we deliver bespoke digital platforms that solve real business problems.
+              From local cafés to medical practices - we deliver bespoke digital platforms that solve real business problems.
             </p>
           </motion.div>
 
@@ -336,7 +336,7 @@ export default function Home() {
 
             <div className="space-y-0">
               {[
-                { title: "Enterprise architecture, startup agility", desc: "We use the same technologies as the world's largest companies — Spring Boot, React, cloud-native infrastructure — but move with the speed your business needs." },
+                { title: "Enterprise architecture, startup agility", desc: "We use the same technologies as the world's largest companies - Spring Boot, React, cloud-native infrastructure - but move with the speed your business needs." },
                 { title: "Australian-first approach", desc: "We understand the Australian market. From local SEO strategy to ACCC compliance, our solutions are built for businesses operating in Australia." },
                 { title: "You own everything", desc: "Full source code ownership, no vendor lock-in, no recurring platform fees. Your software, your intellectual property, your data." },
                 { title: "Results you can measure", desc: "Every project ships with analytics. Track customer engagement, conversion rates, and ROI from day one." },
@@ -395,7 +395,7 @@ export default function Home() {
                 Ready to digitise your business?
               </h2>
               <p className="text-sm text-white/60">
-                Book a free 15-minute consultation. We'll show you exactly what we'd build — no obligation.
+                Book a free 15-minute consultation. We'll show you exactly what we'd build - no obligation.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">

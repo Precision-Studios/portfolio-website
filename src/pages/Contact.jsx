@@ -53,7 +53,7 @@ export default function Contact() {
             <div className="max-w-[1584px] mx-auto px-4 lg:px-8 py-16 lg:py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
-                    {/* Left — Info */}
+                    {/* Left - Info */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -70,7 +70,7 @@ export default function Contact() {
                         </h1>
 
                         <p className="text-base text-white/40 font-light leading-relaxed mb-12 max-w-lg">
-                            Whether you're a medical clinic in Sydney, a café in Melbourne, or a pet centre in Brisbane — we'd love to hear about your business and show you what's possible.
+                            Whether you're a medical clinic in Sydney, a café in Melbourne, or a pet centre in Brisbane - we'd love to hear about your business and show you what's possible.
                         </p>
 
                         <div className="space-y-6">
@@ -124,7 +124,7 @@ export default function Contact() {
                         </div>
                     </motion.div>
 
-                    {/* Right — Form */}
+                    {/* Right - Form */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}

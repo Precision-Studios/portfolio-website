@@ -111,7 +111,7 @@ export default function DemoHub() {
             <span className="text-white/30">for businesses like yours.</span>
           </h1>
           <p className="text-lg text-white/40 max-w-2xl font-light">
-            Explore live, fully functional demos of the solutions we deliver. Each one is purpose-built for a specific industry — and each one comes with source code.
+            Explore live, fully functional demos of the solutions we deliver. Each one is purpose-built for a specific industry - and each one comes with source code.
           </p>
         </motion.div>
 
@@ -133,9 +133,8 @@ export default function DemoHub() {
                   {...wrapperProps}
                   className={`block h-full group ${!isLive ? 'cursor-default' : ''}`}
                 >
-                  <div className={`h-full bg-white/[0.02] border border-white/5 transition-all ${
-                    isLive ? 'hover:border-white/15 hover:bg-white/[0.04]' : 'opacity-50'
-                  }`}>
+                  <div className={`h-full bg-white/[0.02] border border-white/5 transition-all ${isLive ? 'hover:border-white/15 hover:bg-white/[0.04]' : 'opacity-50'
+                    }`}>
                     {/* Top accent bar */}
                     <div className="h-1" style={{ backgroundColor: demo.color }} />
 

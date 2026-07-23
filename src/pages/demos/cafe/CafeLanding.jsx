@@ -12,7 +12,7 @@ const features = [
   {
     icon: "🍽️",
     title: "Live Menu Updates",
-    description: "Change prices, add specials, or mark items sold out — all in real time.",
+    description: "Change prices, add specials, or mark items sold out - all in real time.",
   },
   {
     icon: "📊",
@@ -69,7 +69,7 @@ export default function CafeLanding() {
             </h1>
 
             <p className="text-lg text-white/50 font-light leading-relaxed mb-10 max-w-lg">
-              A complete digital experience for your café — from a beautiful menu your customers browse on their phone, to a kitchen dashboard that keeps everything running smoothly.
+              A complete digital experience for your café - from a beautiful menu your customers browse on their phone, to a kitchen dashboard that keeps everything running smoothly.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -163,7 +163,7 @@ export default function CafeLanding() {
           <blockquote className="text-xl md:text-2xl font-light leading-relaxed text-[#2C1810] mb-6" style={{ fontFamily: "'Georgia', serif" }}>
             "Since switching to the digital menu, our printing costs dropped to zero and average order size went up by 28%. The kitchen dashboard alone was worth it."
           </blockquote>
-          <p className="text-sm text-[#8B7355]">— Demo testimonial for illustration</p>
+          <p className="text-sm text-[#8B7355]">- Demo testimonial for illustration</p>
         </div>
       </section>
 

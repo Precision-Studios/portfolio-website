@@ -161,7 +161,7 @@ export const mockAppointments = [
     date: "2026-07-21",
     time: "14:00",
     status: "pending",
-    notes: "New patient — referred by GP for eczema assessment",
+    notes: "New patient - referred by GP for eczema assessment",
   },
   {
     id: "APT-2026-004",
@@ -181,7 +181,7 @@ export const mockAppointments = [
     date: "2026-07-21",
     time: "15:30",
     status: "confirmed",
-    notes: "Annual cardiac screening — family history of heart disease",
+    notes: "Annual cardiac screening - family history of heart disease",
   },
   {
     id: "APT-2026-006",
@@ -191,7 +191,7 @@ export const mockAppointments = [
     date: "2026-07-21",
     time: "16:00",
     status: "pending",
-    notes: "Persistent lower back pain — 3 weeks",
+    notes: "Persistent lower back pain - 3 weeks",
   },
 ];
 

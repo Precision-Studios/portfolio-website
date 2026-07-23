@@ -80,7 +80,7 @@ export default function MedicalLanding() {
               </h1>
 
               <p className="text-base lg:text-lg text-white/50 font-light leading-relaxed mb-10 max-w-lg">
-                A modern patient booking system with doctor profiles, appointment management, and clinical dashboards — built for Australian healthcare providers.
+                A modern patient booking system with doctor profiles, appointment management, and clinical dashboards - built for Australian healthcare providers.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
